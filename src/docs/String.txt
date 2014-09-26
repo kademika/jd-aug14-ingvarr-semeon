@@ -1,0 +1,21 @@
+String methods:
+
+.length()
+
+.charAt()
+
+.substring()
+
+.replace() .replaceFirst
+
+.indexOf()
+
+.valueOf()
+
+Integer.parseInt(String)
+
+Arrays.toString(<array>)
+
+.toCharArray()
+
+new String(char[])
