@@ -43,6 +43,11 @@ public class Tank {
 		actionField.processFire(bullet);
 	}
 	
+	public void destroy() {
+		this.x = -100;
+		this.y = -100;
+	}
+	
 	public void updateX(int value) {
 		this.x += value;
 	}

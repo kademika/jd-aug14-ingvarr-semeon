@@ -20,7 +20,7 @@ public class BattleField {
 		this.battleField = battleField;
 	}
 	
-	String scanQuadrant(int v, int h) {
+	public String scanQuadrant(int v, int h) {
 		return battleField[v][h];
 	}
 	

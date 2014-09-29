@@ -9,7 +9,7 @@ public enum TankColor {
 		this.id = id;
 	}
 	
-	TankColor getDefaultColor() {
+	public static TankColor getDefaultColor() {
 		return BLACK;
 	}
 }

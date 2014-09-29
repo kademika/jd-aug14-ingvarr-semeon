@@ -6,8 +6,9 @@ public class Tank {
 	private int maxSpeed;
 
 	public Tank() {
-		// this.color.getDefaultColor(); //Return null and do not work via inheritance in child class ???
-		this.color = TankColor.BLACK;
+		this.color = TankColor.getDefaultColor();
+		//this.color.getDefaultColor(); //Return null and do not work via inheritance in child class ???
+		//this.color = TankColor.BLACK;
 		this.crew = 1;
 		setMaxSpeed(40);
 	}
@@ -24,7 +25,7 @@ public class Tank {
 
 	@Override
 	public String toString() {
-		return "Tank template [color: " + this.getColor() + ", crew: "
+		return "[color: " + this.getColor() + ", crew: "
 						+ this.getCrew() + ", max speed: "
 						+ this.getMaxSpeed() + "]";
 	}

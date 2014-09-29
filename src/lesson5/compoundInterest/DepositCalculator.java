@@ -10,8 +10,8 @@ public class DepositCalculator {
 		for(; balance < dreamSum; monthsQty++) {
 			balance = balance + monthlyPayment + (balance + monthlyPayment) * monthlyInterest / 100;
 		}
-		System.out.println("balance = " + (int) balance);
-		System.out.println("months qty = " + monthsQty);
+//		System.out.println("balance = " + (int) balance);
+//		System.out.println("months qty = " + monthsQty);
 		
 		return monthsQty / 12;
 	}

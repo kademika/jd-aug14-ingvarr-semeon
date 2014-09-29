@@ -16,8 +16,6 @@ public class T34 extends Tank {
 
 	@Override
 	public String toString() {
-		return "T34 [color: " + this.getColor() + ", crew: "
-						+ this.getCrew() + ", max speed: "
-						+ this.getMaxSpeed() + "]";
+		return "T34 " + super.toString();
 	}
 }
