@@ -1,19 +1,20 @@
-package lesson4.tanksgame;
+package lesson5.tanksgame;
 
 public class Tank {
 	private int x;
 	private int y;
-	private int direction; // direction: 1 - up, 2 - down, 3 - left, 4 - right
-	private int speed = 10; // this is delay in milliseconds for method Thread.sleep()
+	private Direction direction;
+	
+	protected int speed = 10; // this is delay in milliseconds for method Thread.sleep()
 	
 	private ActionField actionField;
 	private BattleField battleField;
 	
 	public Tank(ActionField af, BattleField bf) {
-		this(af, bf, 0, 256, 4);
+		this(af, bf, 0, 256, Direction.RIGHT);
 	}
 	
-	public Tank(ActionField af, BattleField bf, int x, int y, int direction) {
+	public Tank(ActionField af, BattleField bf, int x, int y, Direction direction) {
 		this.actionField = af;
 		this.battleField = bf;
 		this.x = x;
@@ -21,14 +22,14 @@ public class Tank {
 		this.direction = direction;
 	}
 	
-	public Tank(int tankX, int tankY, int direction, int speed) {
+	public Tank(int tankX, int tankY, Direction direction, int speed) {
 		this.x = tankX;
 		this.y = tankY;
 		this.direction = direction;
 		this.speed = speed;
 	}
 	
-	public void turn(int direction) throws Exception {
+	public void turn(Direction direction) throws Exception {
 		this.direction = direction;
 		actionField.processTurn(this);
 	}
@@ -40,6 +41,11 @@ public class Tank {
 	public void fire() throws Exception {
 		Bullet bullet = new Bullet((x + 25), (y + 25), direction);
 		actionField.processFire(bullet);
+	}
+	
+	public void destroy() {
+		this.x = -100;
+		this.y = -100;
 	}
 	
 	public void updateX(int value) {
@@ -66,11 +72,11 @@ public class Tank {
 		this.y = y;
 	}
 
-	public int getDirection() {
+	public Direction getDirection() {
 		return direction;
 	}
 
-	public void setDirection(int direction) {
+	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
 

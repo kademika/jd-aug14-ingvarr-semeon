@@ -18,9 +18,7 @@ public class BT7 extends Tank {
 
 	@Override
 	public String toString() {
-		return "BT7 [color: " + this.getColor() + ", crew: "
-						+ this.getCrew() + ", max speed: "
-						+ this.getMaxSpeed() + "]";
+		return "BT7 " + super.toString();
 	}
 
 }

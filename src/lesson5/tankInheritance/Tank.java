@@ -7,8 +7,8 @@ public class Tank {
 
 	public Tank() {
 		this.color = TankColor.getDefaultColor();
-		//this.color.getDefaultColor(); //Return null and do not work via inheritance in child class ???
 		//this.color = TankColor.BLACK;
+		//this.color.getDefaultColor(); //Return null and do not work via inheritance in child class ???
 		this.crew = 1;
 		setMaxSpeed(40);
 	}
