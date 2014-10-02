@@ -10,10 +10,18 @@ public class CarShopDemo {
 		Pickup pickup = new Pickup("Ford", "Ranger", CarColor.BLUE, 2.2, GearboxType.CVT, 10.0, 1000, 40000);
 		
 		
-		System.out.println(hatchback1.toString());
-		System.out.println(hatchback2.toString());
-		System.out.println(sedan.toString());
-		System.out.println(wagon.toString());
+		
+//		System.out.println(hatchback1.toString());
+//		System.out.println(hatchback2.toString());
+//		System.out.println(sedan.toString());
+//		System.out.println(wagon.toString());
+//		System.out.println(pickup.toString());
+		
+		
+	}
+	
+	public void goodsDelivery(Car car) {
+		
 	}
 
 }
