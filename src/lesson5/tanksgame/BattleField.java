@@ -28,6 +28,10 @@ public class BattleField {
 		battleField[v][h] = object;
 	}
 	
+	public String getAggressorLocation() {
+		return "64_128";
+	}
+	
 	int getDimentionX() {
 		return battleField.length; //9
 	}

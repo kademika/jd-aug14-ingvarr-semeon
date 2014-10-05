@@ -1,6 +1,8 @@
 package lesson5.shop;
 
 public class Car {
+	private int VIN;
+	private String bodyType;
 	private String brend;
 	private String model;
 	private CarColor color;
@@ -9,7 +11,7 @@ public class Car {
 	private double fuelConsumption;
 	private int trunkVolume;
 	private int price;
-
+	
 	public Car(String brend, String model, CarColor color, double capacity,
 			GearboxType gearbox, double fuelConsumption, int trunkVolume, int price) {
 		this.brend = brend;
@@ -31,6 +33,26 @@ public class Car {
 				+ "trunk volume: " + this.getTrunkVolume() + "\n"
 				+ "price: $" + this.getPrice() + "\n";
 
+	}
+	
+	public int getVIN() {
+		return VIN;
+	}
+	
+	public void setVIN(int vin) {
+		if (VIN == 0) {
+			VIN = vin;
+		} else {
+			System.out.println("WARNING! You cannot change VIN specified by producer!");
+		}
+	}
+	
+	public String getBodyType() {
+		return bodyType;
+	}
+	
+	public void setBodyType(String bodyType) {
+		this.bodyType = bodyType;
 	}
 
 	public String getBrend() {
@@ -96,5 +118,4 @@ public class Car {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
 }

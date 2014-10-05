@@ -1,6 +1,6 @@
 package lesson5.shop;
 
 public enum CarColor {
-	BLACK, BLUE, GREEN, BROWN, RED, YELLOW, SILVER, WHITE;
+	BLACK, BLUE, OLIVE_GREEN, BROWN, RED, YELLOW, SILVER, WHITE;
 
 }
