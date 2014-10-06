@@ -12,4 +12,13 @@ public class Tiger extends Tank {
 		super(af, bf, x, y, direction);
 		this.armor = 1;
 	}
+	
+	@Override
+	public void destroy() {
+		if (this.armor > 0) {
+			this.armor--;
+		} else {
+			super.destroy();
+		}
+	}
 }

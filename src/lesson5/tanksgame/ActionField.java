@@ -175,12 +175,12 @@ public class ActionField extends JPanel {
 		defender = new Tank(this, battleField); // this = ActionField
 
 		String location = battleField.getAggressorLocation();
-		aggressor = new Tank(this, battleField, 
+		aggressor = new Tiger(this, battleField, 
 				Integer.parseInt(location.split("_")[1]), Integer.parseInt(location.split("_")[0]), Direction.UP);
 
-		bullet = new Bullet(-100, 100, Direction.NONE);
+		bullet = new Bullet(-100,-100, Direction.NONE);
 
-		JFrame frame = new JFrame("BATTLE FIELD, DAY 4");
+		JFrame frame = new JFrame("BATTLE FIELD, DAY 5");
 		frame.setLocation(750, 150);
 		frame.setMinimumSize(new Dimension(battleField.getBfWidth(),
 				battleField.getBfHeight() + 22));
@@ -227,11 +227,12 @@ public class ActionField extends JPanel {
 				}
 			}
 		}
-
-		g.setColor(new Color(255, 0, 0));
+		
+		//defender
+		g.setColor(new Color(0, 255, 0));
 		g.fillRect(defender.getX(), defender.getY(), 64, 64);
 
-		g.setColor(new Color(0, 255, 0));
+		g.setColor(new Color(255, 0, 0));
 		if (defender.getDirection() == Direction.UP) {
 			g.fillRect(defender.getX() + 20, defender.getY(), 24, 34);
 		} else if (defender.getDirection() == Direction.DOWN) {
@@ -241,7 +242,23 @@ public class ActionField extends JPanel {
 		} else {
 			g.fillRect(defender.getX() + 30, defender.getY() + 20, 34, 24);
 		}
+		
+		//aggressor
+		g.setColor(new Color(255, 0, 0));
+		g.fillRect(aggressor.getX(), aggressor.getY(), 64, 64);
 
+		g.setColor(new Color(0, 255, 0));
+		if (aggressor.getDirection() == Direction.UP) {
+			g.fillRect(aggressor.getX() + 20, aggressor.getY(), 24, 34);
+		} else if (aggressor.getDirection() == Direction.DOWN) {
+			g.fillRect(aggressor.getX() + 20, aggressor.getY() + 30, 24, 34);
+		} else if (aggressor.getDirection() == Direction.LEFT) {
+			g.fillRect(aggressor.getX(), aggressor.getY() + 20, 34, 24);
+		} else {
+			g.fillRect(aggressor.getX() + 30, aggressor.getY() + 20, 34, 24);
+		}
+		
+		//bullet
 		g.setColor(new Color(255, 255, 0));
 		g.fillRect(bullet.getX(), bullet.getY(), 14, 14);
 	}

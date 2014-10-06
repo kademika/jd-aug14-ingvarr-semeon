@@ -29,7 +29,15 @@ public class BattleField {
 	}
 	
 	public String getAggressorLocation() {
-		return "64_128";
+		int randomLocation = ((int)(Math.random()*2) + 1); //0..2 (+1) => 1..3
+		
+		if (randomLocation == 1) {
+			return "128_192";
+		} else if (randomLocation == 2) {
+			return "128_320";
+		} else {
+			return "320_320";
+		}
 	}
 	
 	int getDimentionX() {
