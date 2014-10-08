@@ -48,7 +48,7 @@ public class Statistic {
 		}
 	}
 	
-	public static void addTransactionToList(int id, String customerName, Car carForSale) {
+	public static void addTransactionToList(int id, Customer customerName, Car carForSale) {
 		Transaction transaction = new Transaction();
 		transaction.setId(id);
 		transaction.setCustomerName(customerName);

@@ -2,15 +2,20 @@ package lesson5.shop;
 
 public class Transaction {
 	private int id;
-	private String customerName;
+	private Customer customerName;
 	private Car carForSale;
 	
 	public Transaction() {
 	}
 	
-	public static void transaction(int dayNumber, int id, String customerName, Car carForSale) {
+	public static void transaction(int dayNumber, int id, Customer customerName, Car carForSale) {
 		Statistic.addTransactionToCounter(dayNumber);
 		Statistic.addTransactionToList(id, customerName, carForSale);
+	}
+	
+	@Override
+	public String toString() {
+		return this.getId() + " " + this.getCustomerName() + " " + this.getCarForSale();
 	}
 
 	public int getId() {
@@ -21,11 +26,11 @@ public class Transaction {
 		this.id = id;
 	}
 
-	public String getCustomerName() {
+	public Customer getCustomerName() {
 		return customerName;
 	}
 
-	public void setCustomerName(String customerName) {
+	public void setCustomerName(Customer customerName) {
 		this.customerName = customerName;
 	}
 

@@ -12,6 +12,10 @@ public class Car {
 	private int trunkVolume;
 	private int price;
 	
+	public Car() {
+		
+	}
+	
 	public Car(String brend, String model, CarColor color, double capacity,
 			GearboxType gearbox, double fuelConsumption, int trunkVolume, int price) {
 		this.brend = brend;
