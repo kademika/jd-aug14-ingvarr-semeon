@@ -13,10 +13,10 @@ public class Circle extends Shape {
 		
 		g2D.setStroke(new BasicStroke(7));
 		
-		g.setColor(new Color(255, 0, 0));
+		g.setColor(new Color(0, 0, 255));
 				
-		g.drawOval(50, 100, 100, 100);
+		g.drawOval(400, 100, 100, 100);
 		
-//		g.fillOval(100, 100, 100, 100);
+		g.fillOval(400, 220, 100, 100);
 	}
 }

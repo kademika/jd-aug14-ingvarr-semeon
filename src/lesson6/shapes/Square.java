@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class Triangle extends Shape {
+public class Square extends Rectangle {
 	
 	@Override
 	public void draw(Graphics g) {
@@ -13,10 +13,8 @@ public class Triangle extends Shape {
 		
 		g2D.setStroke(new BasicStroke(7));
 		
-		g.setColor(new Color(255, 0, 0));
-				
-		g.drawPolygon(new int[]{150, 200, 100}, new int[]{100, 200, 200}, 3);
+		g.setColor(new Color(0, 255, 0));
 		
-		g.fillPolygon(new int[]{150, 200, 100}, new int[]{220, 320, 320}, 3);
+		g.drawPolygon(new int[]{240, 360, 360, 240}, new int[]{50, 50, 100, 100}, 4);
 	}
 }

@@ -13,10 +13,12 @@ public class Rectangle extends Shape {
 		
 		g2D.setStroke(new BasicStroke(7));
 		
-		g.setColor(new Color(255, 0, 0));
-				
-		g.drawRect(200, 100, 100, 100);
+		g.setColor(new Color(0, 0, 0));
 		
-//		g.fillOval(100, 100, 100, 100);
+		g.drawPolygon(new int[]{240, 360, 360, 240}, new int[]{100, 100, 200, 200}, 4);
+		
+//		g.drawRect(240, 220, 120, 100);
+		
+		g.fillRect(240, 220, 120, 100);
 	}
 }

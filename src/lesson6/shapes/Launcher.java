@@ -6,7 +6,8 @@ public class Launcher {
 		Shape[] shapes = new Shape[] {
 			new Circle(),
 			new Rectangle(),
-			new Triangle()
+			new Triangle(),
+			new Square()
 		};
 		
 		new ShapesTemplate(shapes);
