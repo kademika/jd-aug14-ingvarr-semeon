@@ -15,6 +15,8 @@ public class Square extends Rectangle {
 		
 		g.setColor(new Color(0, 255, 0));
 		
-		g.drawPolygon(new int[]{240, 360, 360, 240}, new int[]{50, 50, 100, 100}, 4);
+		g.drawPolygon(new int[]{270, 330, 330, 270}, new int[]{20, 20, 80, 80}, 4);
+		
+		g.fillPolygon(new int[]{270, 330, 330, 270}, new int[]{20, 20, 80, 80}, 4);
 	}
 }
