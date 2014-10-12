@@ -28,10 +28,6 @@ public class ShopLauncher {
 		
 		stat.outTransactionsList();
 		
-//		System.out.println(shop.garage[0]);// @Override toString() method is calling automatic. How???
-//		System.out.println(shop.garage[1]);
-//		System.out.println(shop.garage[2]);
-		
 	}
 	
 	public static void carsDelivery(Shop shop) {

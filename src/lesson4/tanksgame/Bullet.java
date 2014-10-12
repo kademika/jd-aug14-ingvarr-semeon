@@ -3,7 +3,7 @@ package lesson4.tanksgame;
 public class Bullet {
 	private int x;
 	private int y;
-	private int speed = 5;
+	private int speed = 15;
 	private int direction;
 	
 	public Bullet(int x, int y, int direction) {

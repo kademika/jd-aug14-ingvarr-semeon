@@ -1,4 +1,4 @@
-package lesson5.tanksgame;
+package lesson6.tanksgame;
 
 public class BattleField {
 	private int bfWidth = 592;

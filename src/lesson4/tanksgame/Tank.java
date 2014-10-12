@@ -4,7 +4,7 @@ public class Tank {
 	private int x;
 	private int y;
 	private int direction; // direction: 1 - up, 2 - down, 3 - left, 4 - right
-	private int speed = 10; // this is delay in milliseconds for method Thread.sleep()
+	private int speed = 20; // this is delay in milliseconds for method Thread.sleep()
 	
 	private ActionField actionField;
 	private BattleField battleField;

@@ -1,6 +1,9 @@
-package lesson5.tanksgame;
+package lesson6.tanksgame;
 
-public class Bullet {
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Bullet implements IDrawable, IDestroyable {
 	private int x;
 	private int y;
 	private Direction direction;
@@ -20,6 +23,13 @@ public class Bullet {
 		this.y += value;
 	}
 	
+	@Override
+	public void draw(Graphics g) {
+		g.setColor(new Color(255, 255, 0));
+		g.fillRect(this.getX(), this.getY(), 14, 14);
+	}
+	
+	@Override
 	public void destroy() {
 		this.x = -100;
 		this.y = -100;
@@ -40,5 +50,4 @@ public class Bullet {
 	public Direction getDirection() {
 		return direction;
 	}
-	
 }
