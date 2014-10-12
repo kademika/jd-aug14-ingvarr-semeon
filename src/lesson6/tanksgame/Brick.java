@@ -17,18 +17,15 @@ public class Brick implements IDrawable, IDestroyable {
 		this.setColor(new Color(0, 0, 255));
 	}
 	
-	public Brick(ActionField af, BattleField bf, int x, int y) {
+	public Brick(ActionField af, BattleField bf) {
 		this.actionField = af;
 		this.battleField = bf;
-		this.setX(x);
-		this.setY(y);
 		this.setColor(new Color(0, 0, 255));
 	}
 	
 	@Override
 	public void destroy() {
-		this.setX(-100);
-		this.setY(-100);	
+		battleField.updateQuadrant(y, x, " ");	
 	}
 
 	@Override

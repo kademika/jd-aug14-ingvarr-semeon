@@ -18,6 +18,30 @@ public class ActionField extends JPanel {
 	private Bullet bullet;
 	
 	private Brick brick;
+	
+	public ActionField() throws Exception {
+		battleField = new BattleField();
+		
+		defender = new T34(this, battleField, 0, 256, Direction.RIGHT);
+
+		String location = battleField.getAggressorLocation();
+		
+		aggressor = new Tiger(this, battleField, 
+				Integer.parseInt(location.split("_")[1]), Integer.parseInt(location.split("_")[0]), Direction.UP);
+
+		bullet = new Bullet(-100,-100, Direction.NONE);
+		
+		brick = new Brick(this, battleField);
+
+		JFrame frame = new JFrame("BATTLE FIELD, DAY 6");
+		frame.setLocation(750, 150);
+		frame.setMinimumSize(new Dimension(battleField.getBfWidth(),
+				battleField.getBfHeight() + 22));
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.getContentPane().add(this);
+		frame.pack();
+		frame.setVisible(true);
+	}
 
 	public void runTheGame() throws Exception {
 		defender.fire();
@@ -147,6 +171,7 @@ public class ActionField extends JPanel {
 		if (y >= 0 && y < 9 && x >= 0 && x < 9) {
 			if (battleField.scanQuadrant(y, x) == "B" /*!= " " && battleField.scanQuadrant(y, x) != ""*/) {
 				battleField.updateQuadrant(y, x, " ");
+//				brick.destroy();
 				return true;
 			}
 			
@@ -178,28 +203,6 @@ public class ActionField extends JPanel {
 			}
 		}
 		return false;
-	}
-
-	public ActionField() throws Exception {
-		battleField = new BattleField();
-		
-		defender = new T34(this, battleField, 0, 256, Direction.RIGHT);
-
-		String location = battleField.getAggressorLocation();
-		
-		aggressor = new Tiger(this, battleField, 
-				Integer.parseInt(location.split("_")[1]), Integer.parseInt(location.split("_")[0]), Direction.UP);
-
-		bullet = new Bullet(-100,-100, Direction.NONE);
-
-		JFrame frame = new JFrame("BATTLE FIELD, DAY 6");
-		frame.setLocation(750, 150);
-		frame.setMinimumSize(new Dimension(battleField.getBfWidth(),
-				battleField.getBfHeight() + 22));
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.getContentPane().add(this);
-		frame.pack();
-		frame.setVisible(true);
 	}
 
 	@Override
