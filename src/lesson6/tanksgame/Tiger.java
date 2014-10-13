@@ -16,7 +16,7 @@ public class Tiger extends AbstractTank {
 		super(af, bf, x, y, direction);
 		this.armor = 1;
 		tankColor = new Color(205, 0, 0); //dark red
-		towerColor = new Color(255, 155, 0); //orange
+		towerColor = new Color(255, 200, 0); //yellow
 	}
 	
 	public int getArmor() {

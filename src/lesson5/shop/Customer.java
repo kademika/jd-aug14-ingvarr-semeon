@@ -5,7 +5,10 @@ public class Customer {
 	private String surname;
 	private String phoneNumber;
 	
-	public Customer() {
+	public Customer(String name, String surname, String phoneNumber) {
+		this.setName(name);
+		this.setSurname(surname);
+		this.setPhoneNumber(phoneNumber);
 	}
 	
 	@Override

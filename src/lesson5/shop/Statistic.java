@@ -42,16 +42,18 @@ public class Statistic {
 		System.out.println();
 	}
 	
+	
+	
 	public static void addTransactionToCounter(int dayNumber) {
 		if (dayNumber >= 1 && dayNumber <= 7) {
 			transactionsCounter[dayNumber - 1] += 1;
 		}
 	}
 	
-	public static void addTransactionToList(int id, Customer customerName, Car carForSale) {
+	public static void addTransactionToList(int id, Customer customer, Car carForSale) {
 		Transaction transaction = new Transaction();
 		transaction.setId(id);
-		transaction.setCustomerName(customerName);
+		transaction.setCustomer(customer);
 		transaction.setCarForSale(carForSale);
 		for (int i = 0; i < transactionsList.length; i++) {
 			if (transactionsList[i] == null) {

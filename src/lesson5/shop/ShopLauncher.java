@@ -10,22 +10,15 @@ public class ShopLauncher {
 		Statistic stat = new Statistic();
 		stat.inStock(shop);
 		
-		Customer customer1 = new Customer();
-		customer1.setName("Igor");
-		customer1.setSurname("Semenov");
-		customer1.setPhoneNumber("+380632103895");
+		shop.customerReqistration("Igor", "Semenov", "+380632103895");
+		shop.customerReqistration("Oleg", "Yushchenko", "+380632103896");
+		shop.customerReqistration("Vadim", "Dovbysh", "+380632103090");
 		
-		Customer customer2 = new Customer();
-		customer2.setName("Oleg");
-		customer2.setSurname("Yushchenko");
-		customer2.setPhoneNumber("+380632103896");
 		
-		Transaction.transaction(1, 7, customer1, shop.getCarForSale("Ford", "Focus", CarColor.RED, 1.6, GearboxType.DSG));
-		Transaction.transaction(2, 8, customer2, shop.getCarForSale("Ford", "Focus", CarColor.SILVER, 1.0, GearboxType.MANUAL));
+		
 		
 		salesQtyGenerator(stat);
 		stat.outLastWeekTransactions();
-		
 		stat.outTransactionsList();
 		
 	}
