@@ -28,10 +28,10 @@ public class ActionField extends JPanel {
 		
 		aggressor = new Tiger(this, battleField, 
 				Integer.parseInt(location.split("_")[1]), Integer.parseInt(location.split("_")[0]), Direction.UP);
-
+		
 		bullet = new Bullet(-100,-100, Direction.NONE);
 		
-		brick = new Brick(this, battleField);
+//		brick = new Brick(this, battleField);
 
 		JFrame frame = new JFrame("BATTLE FIELD, DAY 6");
 		frame.setLocation(750, 150);
@@ -48,10 +48,10 @@ public class ActionField extends JPanel {
 		defender.fire();
 		defender.fire();
 		defender.fire();
+		defender.move();
+		defender.move();
 		
 		if (0 == 1) {
-			defender.move();
-			defender.move();
 			defender.turn(Direction.DOWN);
 			defender.move();
 			defender.turn(Direction.RIGHT);
@@ -170,8 +170,8 @@ public class ActionField extends JPanel {
 
 		if (y >= 0 && y < 9 && x >= 0 && x < 9) {
 			if (battleField.scanQuadrant(y, x) == "B" /*!= " " && battleField.scanQuadrant(y, x) != ""*/) {
-				battleField.updateQuadrant(y, x, " ");
-//				brick.destroy();
+				battleField.updateQuadrant(y, x, " "); //destroy object on battleField
+//				brick.destroy(); // ??? Do not work ???
 				return true;
 			}
 			
