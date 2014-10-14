@@ -1,19 +1,30 @@
 package lesson5.shop;
 
 public class Customer {
+	private int id;
 	private String name;
 	private String surname;
 	private String phoneNumber;
+	private Car ownCar;
 	
 	public Customer(String name, String surname, String phoneNumber) {
 		this.setName(name);
 		this.setSurname(surname);
 		this.setPhoneNumber(phoneNumber);
+		this.setId((int)(Math.random()*98) + 101); //101..199
 	}
 	
 	@Override
 	public String toString() {
 		return this.getName();
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getName() {
@@ -34,6 +45,13 @@ public class Customer {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
+
+	public Car getOwnCar() {
+		return ownCar;
+	}
+
+	public void setOwnCar(Car ownCar) {
+		this.ownCar = ownCar;
+	}
 	
 }

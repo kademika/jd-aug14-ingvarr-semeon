@@ -1,7 +1,7 @@
 package lesson5.shop;
 
 public class Hatchback extends Car {
-	public static final String HATCHBACK = "Hatchback";
+	private static final String HATCHBACK = "Hatchback";
 	
 	public Hatchback(String brend, String model, CarColor color, double capacity, GearboxType gearbox,
 			double fuelConsumption, int trunkVolume, int price) {

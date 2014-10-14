@@ -1,11 +1,12 @@
 package lesson5.shop;
 
 public class Pickup extends Car {
+	public static final String PICKUP = "Pickup";
 	
 	public Pickup(String brend, String model, CarColor color, double capacity, GearboxType gearbox,
 			double fuelConsumption, int trunkVolume, int price) {
 		super(brend, model, color, capacity, gearbox, fuelConsumption, trunkVolume, price);
-		super.setBodyType("Pickup");
+		super.setBodyType(PICKUP);
 		super.setVIN((int)(Math.random()*998) + 2001); //2001..2999
 	}
 	
