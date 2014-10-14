@@ -1,4 +1,4 @@
-package lesson5.methodOverriding;
+package lesson5.methodoverriding;
 
 public class Demo {
 

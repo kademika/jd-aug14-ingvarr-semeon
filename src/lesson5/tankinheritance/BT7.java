@@ -1,4 +1,4 @@
-package lesson5.tankInheritance;
+package lesson5.tankinheritance;
 
 public class BT7 extends Tank {
 	public BT7() {

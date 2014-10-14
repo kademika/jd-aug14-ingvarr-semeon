@@ -13,19 +13,19 @@ public class ShopLauncher {
 				, new Sedan("Ford", "Focus", CarColor.SILVER, 1.0, GearboxType.MANUAL, 6.4, 421, 25546)
 				, new Customer("Oleg", "Yushchenko", "+380633148309"));
 		
-//		shop.sell("11-10-2014"
-//				, new Van("Ford", "S-Max", CarColor.OLIVE_GREEN, 2.0, GearboxType.DSG, 7.4, 1051, 39538)
-//				, new Customer("Vadim", "Dovbysh", "+380632103090"));
-//				
-//		shop.sell("13-10-2014"
-//				, new Wagon("Ford", "Focus", CarColor.RED, 1.6, GearboxType.DSG, 9.3, 476, 25714)
-//				, new Customer("Igor", "Semenov", "+380632103895"));
+		shop.sell("11-10-2014"
+				, new Van("Ford", "S-Max", CarColor.OLIVE_GREEN, 2.0, GearboxType.DSG, 7.4, 1051, 39538)
+				, new Customer("Vadim", "Dovbysh", "+380632103090"));
+				
+		shop.sell("13-10-2014"
+				, new Wagon("Ford", "Focus", CarColor.RED, 1.6, GearboxType.DSG, 9.3, 476, 25714)
+				, new Customer("Igor", "Semenov", "+380632103895"));
 		
 		shop.inStock();
 		
 		shop.outTransactionsList();
 		
-		
+		shop.weeklySalesReport();
 	}
 
 	public static void carsDelivery(Shop shop) throws Exception {

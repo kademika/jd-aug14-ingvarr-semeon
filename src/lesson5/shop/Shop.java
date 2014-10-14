@@ -1,14 +1,19 @@
 package lesson5.shop;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Shop {
-	public Car[] garage;
-	public Transaction[] transactions;
-//	public Customer[] customers;
+	private Car[] garage;
+	private Transaction[] transactions;
+	private int[] weeklyTransactionsCounter;
 
 	public Shop(int shopCapacity) {
 		garage = new Car[shopCapacity];
 		transactions = new Transaction[shopCapacity];
-//		customers = new Customer[shopCapacity];
+		weeklyTransactionsCounter = new int[7];
 	}
 
 	public void addToGarage(Car car) {
@@ -25,7 +30,7 @@ public class Shop {
 	public Car getCar(String brend, String model, CarColor color,
 			double capacity, GearboxType gearbox) {
 		for (int i = 0; i < garage.length; i++) {
-			if (garage[i].getBrend() == brend && garage[i].getModel() == model
+			if (garage[i] != null && garage[i].getBrend() == brend && garage[i].getModel() == model
 					&& garage[i].getColor() == color
 					&& garage[i].getCapacity() == capacity
 					&& garage[i].getGearbox() == gearbox) {
@@ -35,18 +40,22 @@ public class Shop {
 		throw new RequestedCarIsAbsentException();
 	}
 	
-	public void sell(String ddmmyyyy, Car car, Customer customer) {
+	public void sell(String dd_mm_yyyy, Car car, Customer customer) {
 		Car carForSale = this.getCar(car.getBrend(), car.getModel(),
 				car.getColor(), car.getCapacity(), car.getGearbox());
+		
 		customer.setOwnCar(carForSale);
 		this.handOut(carForSale);
-		this.registerTransaction(ddmmyyyy, customer, carForSale);
-//		this.registerCustomer(customer.getName(), customer.getSurname(), customer.getPhoneNumber());
+		this.registerTransaction(dd_mm_yyyy, customer, carForSale);
+		System.out.println(car.getBodyType() + " " 
+						+ car.getBrend() + " " 
+						+ car.getModel() + " " 
+						+ "was sold for " + car.getPrice() + " USD");
 	}
 	
 	private void handOut(Car car) {
 		for (int i = 0; i < garage.length; i++) {
-			if (garage[i].getBrend() == car.getBrend() && garage[i].getModel() == car.getModel()
+			if (garage[i] != null && garage[i].getBrend() == car.getBrend() && garage[i].getModel() == car.getModel()
 					&& garage[i].getColor() == car.getColor()
 					&& garage[i].getCapacity() == car.getCapacity()
 					&& garage[i].getGearbox() == car.getGearbox()) {
@@ -57,25 +66,15 @@ public class Shop {
 		throw new RequestedCarIsAbsentException();
 	}
 	
-	private void registerTransaction(String ddmmyyyy, Customer customer, Car car) {
+	private void registerTransaction(String dd_mm_yyyy, Customer customer, Car car) {
 		for (int i = 0; i < transactions.length; i++) {
 			if (transactions[i] == null) {
-				transactions[i] = new Transaction(ddmmyyyy, customer, car);
+				transactions[i] = new Transaction(dd_mm_yyyy, customer, car);
 				return;
 			}
 		}
 		throw new ShopIsOverloadedException();
 	}
-
-//	private void registerCustomer(String name, String surname, String phoneNumber) {
-//		for (int i = 0; i < customers.length; i++) {
-//			if (customers[i] == null) {
-//				customers[i] = new Customer(name, surname, phoneNumber);
-//				return;
-//			}
-//		}
-//		throw new ShopIsOverloadedException();
-//	}
 
 	public void getPriceList() {
 		if (garage != null) {
@@ -142,11 +141,58 @@ public class Shop {
 	}
 	
 	public void outTransactionsList() {
+		System.out.println("Transactions History:");
 		for (int i = 0; i < transactions.length; i++) {
 			if (transactions[i] != null) {
 				System.out.println(transactions[i]);
 			}
 		}
+	}
+	
+	public void weeklySalesReport() {
+		this.transactionsCount();
+		System.out.println();
+		System.out.print("Last week sales qty: [");
+		int length = weeklyTransactionsCounter.length - 1;
+		for (int i = 0; i < length; i++) {
+			System.out.print(weeklyTransactionsCounter[i] + ", ");
+		}
+		System.out.println(weeklyTransactionsCounter[length] + "]");
+	}
+	
+	private void transactionsCount() {
+		for (int i = 0; i < transactions.length; i++) {
+			if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+					== (Integer.parseInt(getCurrentDate().substring(0, 1))) ) {
+				weeklyTransactionsCounter[6] += 1;
+			} else if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 1) ) {
+				weeklyTransactionsCounter[5] += 1;
+			} else if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 2) ) {
+				weeklyTransactionsCounter[4] += 1;
+			} else if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 3) ) {
+				weeklyTransactionsCounter[3] += 1;
+			} else if ( transactions[i] != null &&(Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 4) ) {
+				weeklyTransactionsCounter[2] += 1;
+			} else if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 5) ) {
+				weeklyTransactionsCounter[1] += 1;
+			} else if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 6) ) {
+				weeklyTransactionsCounter[0] += 1;
+			}
+		}
+	}
+	
+	private String getCurrentDate() {
+		Date date = Calendar.getInstance().getTime();
+		DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String today = formatter.format(date);
+        //System.out.println("Today : " + today);
+        return today;
 	}
 	
 }

@@ -1,4 +1,4 @@
-package lesson5.tankInheritance;
+package lesson5.tankinheritance;
 
 public class Tiger extends Tank {
 	private int armor = 1;

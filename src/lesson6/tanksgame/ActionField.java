@@ -170,8 +170,8 @@ public class ActionField extends JPanel {
 
 		if (y >= 0 && y < 9 && x >= 0 && x < 9) {
 			if (battleField.scanQuadrant(y, x) == "B" /*!= " " && battleField.scanQuadrant(y, x) != ""*/) {
-				battleField.updateQuadrant(y, x, " "); //destroy object on battleField
-//				brick.destroy(); // ??? Do not work ???
+//				battleField.updateQuadrant(y, x, " "); //destroy object on battleField
+				brick.destroy(); // ??? Do not work ???
 				return true;
 			}
 			

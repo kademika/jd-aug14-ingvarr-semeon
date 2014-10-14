@@ -1,4 +1,4 @@
-package lesson5.tankInheritance;
+package lesson5.tankinheritance;
 
 public enum TankColor {
 	BLACK(0), BLUE(1), GREEN(2), RED(3), WHITE(4);

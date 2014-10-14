@@ -1,4 +1,4 @@
-package lesson5.tankInheritance;
+package lesson5.tankinheritance;
 
 public class WhiteTiger extends Tiger {
 

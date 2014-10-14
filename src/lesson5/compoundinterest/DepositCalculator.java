@@ -1,4 +1,4 @@
-package lesson5.compoundInterest;
+package lesson5.compoundinterest;
 
 public class DepositCalculator {
 	

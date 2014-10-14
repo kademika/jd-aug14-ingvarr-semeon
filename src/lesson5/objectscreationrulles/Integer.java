@@ -1,4 +1,4 @@
-package lesson5.objectsCreationRulles;
+package lesson5.objectscreationrulles;
 
 public class Integer extends Number {
 	public Integer() {
