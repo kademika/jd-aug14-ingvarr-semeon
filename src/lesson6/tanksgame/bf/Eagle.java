@@ -1,7 +1,10 @@
-package lesson6.tanksgame;
+package lesson6.tanksgame.bf;
 
 import java.awt.Color;
 import java.awt.Graphics;
+
+import lesson6.tanksgame.af.ActionField;
+import lesson6.tanksgame.interfaces.IDrawable;
 
 public class Eagle implements IDrawable {
 	private int x;

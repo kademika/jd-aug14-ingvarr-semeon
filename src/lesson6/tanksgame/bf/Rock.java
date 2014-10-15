@@ -1,9 +1,13 @@
-package lesson6.tanksgame;
+package lesson6.tanksgame.bf;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Water implements IDrawable {
+import lesson6.tanksgame.af.ActionField;
+import lesson6.tanksgame.interfaces.IDestroyable;
+import lesson6.tanksgame.interfaces.IDrawable;
+
+public class Rock implements IDrawable, IDestroyable {
 	private int x;
 	private int y;
 	private Color color;
@@ -11,18 +15,23 @@ public class Water implements IDrawable {
 	private ActionField actionField;
 	private BattleField battleField;
 	
-	public Water(int x, int y) {
+	public Rock(int x, int y) {
 		this.setX(x);
 		this.setY(y);
-		this.setColor(new Color(0, 0, 255)); //blue
+		this.setColor(new Color(120, 120, 120)); //grey
 	}
 	
-	public Water(ActionField af, BattleField bf) {
+	public Rock(ActionField af, BattleField bf) {
 		this.actionField = af;
 		this.battleField = bf;
-		this.setColor(new Color(0, 0, 255)); //blue
+		this.setColor(new Color(120, 120, 120)); //grey
 	}
 	
+	@Override
+	public void destroy() {
+		battleField.updateQuadrant(y, x, " ");
+	}
+
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(color);
@@ -32,15 +41,15 @@ public class Water implements IDrawable {
 	public int getX() {
 		return x;
 	}
-
+	
 	public void setX(int x) {
 		this.x = x;
 	}
-
+	
 	public int getY() {
 		return y;
 	}
-
+	
 	public void setY(int y) {
 		this.y = y;
 	}
@@ -48,7 +57,7 @@ public class Water implements IDrawable {
 	public Color getColor() {
 		return color;
 	}
-
+	
 	public void setColor(Color color) {
 		this.color = color;
 	}

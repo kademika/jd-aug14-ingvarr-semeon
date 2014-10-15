@@ -1,4 +1,4 @@
-package lesson6.tanksgame;
+package lesson6.tanksgame.interfaces;
 
 import java.awt.Graphics;
 

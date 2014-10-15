@@ -1,4 +1,4 @@
-package lesson6.tanksgame;
+package lesson6.tanksgame.af;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,30 +8,30 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import lesson6.tanksgame.bf.BattleField;
+
 public class ActionField extends JPanel {
 	private boolean COLORDED_MODE = false;
 
 	private BattleField battleField;
 	
 	private AbstractTank defender;
-	private AbstractTank aggressor;
-	private Bullet bullet;
 	
-	private Brick brick;
+	private AbstractTank aggressor;
+	
+	private Bullet bullet;
 	
 	public ActionField() throws Exception {
 		battleField = new BattleField();
 		
-		defender = new T34(this, battleField, 0, 256, Direction.RIGHT);
+		defender = new T34(this, 0, 256, Direction.RIGHT);
 
 		String location = battleField.getAggressorLocation();
 		
-		aggressor = new Tiger(this, battleField, 
+		aggressor = new Tiger(this, 
 				Integer.parseInt(location.split("_")[1]), Integer.parseInt(location.split("_")[0]), Direction.UP);
 		
 		bullet = new Bullet(-100,-100, Direction.NONE);
-		
-//		brick = new Brick(this, battleField);
 
 		JFrame frame = new JFrame("BATTLE FIELD, DAY 6");
 		frame.setLocation(750, 150);
@@ -154,35 +154,27 @@ public class ActionField extends JPanel {
 			Thread.sleep(bullet.getSpeed());
 		}
 	}
-
-	public String getQuadrant(int x, int y) {
-		return y / 64 + "_" + x / 64;
-	}
-
-	public String getQuadrantXY(int v, int h) {
-		return (v - 1) * 64 + "_" + (h - 1) * 64;
-	}
-
+	
 	public boolean processInterception() {
-		String coordinates = getQuadrant(bullet.getX(), bullet.getY());
+		String coordinates = battleField.getQuadrant(bullet.getX(), bullet.getY());
 		int y = Integer.parseInt(coordinates.substring(0, coordinates.indexOf("_")));
 		int x = Integer.parseInt(coordinates.substring(coordinates.indexOf("_") + 1, coordinates.length()));
 
 		if (y >= 0 && y < 9 && x >= 0 && x < 9) {
 			if (battleField.scanQuadrant(y, x) == "B" /*!= " " && battleField.scanQuadrant(y, x) != ""*/) {
-//				battleField.updateQuadrant(y, x, " "); //destroy object on battleField
-				brick.destroy(); // ??? Do not work ???
+				battleField.updateQuadrant(y, x, " "); //destroy object on battleField
+//				brick.destroy(); // ??? Do not work ???
 				return true;
 			}
 			
 			//check aggressor
-			if (checkInterception(getQuadrant(aggressor.getX(), aggressor.getY()), coordinates)) {
+			if (checkInterception(battleField.getQuadrant(aggressor.getX(), aggressor.getY()), coordinates)) {
 				aggressor.destroy();
 				return true;
 			}
 			
 			//check defender
-			if (checkInterception(getQuadrant(defender.getX(), defender.getY()), coordinates)) {
+			if (checkInterception(battleField.getQuadrant(defender.getX(), defender.getY()), coordinates)) {
 				defender.destroy();
 				return true;
 			}
@@ -227,27 +219,12 @@ public class ActionField extends JPanel {
 				g.fillRect(h * 64, v * 64, 64, 64);
 			}
 		}
-
-		for (int j = 0; j < battleField.getDimentionY(); j++) {
-			for (int k = 0; k < battleField.getDimentionX(); k++) {
-				if (battleField.scanQuadrant(j, k).equals("B")) {
-					String coordinates = getQuadrantXY(j + 1, k + 1);
-					int separator = coordinates.indexOf("_");
-					int y = Integer.parseInt(coordinates
-							.substring(0, separator));
-					int x = Integer.parseInt(coordinates
-							.substring(separator + 1));
-					brick = new Brick(x, y);
-					brick.draw(g);
-//					g.setColor(new Color(0, 0, 255));
-//					g.fillRect(x, y, 64, 64);
-				}
-			}
-		}
 		
+		battleField.draw(g);
 		defender.draw(g);
 		aggressor.draw(g);
 		bullet.draw(g);
+		
 	}
 
 }

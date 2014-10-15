@@ -1,7 +1,10 @@
-package lesson6.tanksgame;
+package lesson6.tanksgame.af;
 
 import java.awt.Color;
 import java.awt.Graphics;
+
+import lesson6.tanksgame.interfaces.IDestroyable;
+import lesson6.tanksgame.interfaces.IDrawable;
 
 public class Bullet implements IDrawable, IDestroyable {
 	private int x;

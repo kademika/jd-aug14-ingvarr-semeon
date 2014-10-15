@@ -1,9 +1,15 @@
-package lesson6.tanksgame;
+package lesson6.tanksgame.af;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
-public abstract class AbstractTank implements IDrawable, IDestroyable {
+import lesson6.tanksgame.interfaces.IDrawable;
+import lesson6.tanksgame.interfaces.IDestroyable;
+import lesson6.tanksgame.interfaces.ITurnable;
+import lesson6.tanksgame.interfaces.IMoveable;
+import lesson6.tanksgame.interfaces.IFireable;
+
+public abstract class AbstractTank implements IDrawable, IDestroyable, ITurnable, IMoveable, IFireable {
 	private int x;
 	private int y;
 	private Direction direction;
@@ -14,15 +20,13 @@ public abstract class AbstractTank implements IDrawable, IDestroyable {
 	protected Color towerColor;
 	
 	private ActionField actionField;
-	private BattleField battleField;
 	
-	public AbstractTank(ActionField af, BattleField bf) {
-		this(af, bf, 0, 0, Direction.RIGHT);
+	public AbstractTank(ActionField af) {
+		this(af, 0, 0, Direction.RIGHT);
 	}
 	
-	public AbstractTank(ActionField af, BattleField bf, int x, int y, Direction direction) {
+	public AbstractTank(ActionField af, int x, int y, Direction direction) {
 		this.actionField = af;
-		this.battleField = bf;
 		this.x = x;
 		this.y = y;
 		this.direction = direction;
@@ -37,10 +41,10 @@ public abstract class AbstractTank implements IDrawable, IDestroyable {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(tankColor); //new Color(0, 255, 0)
+		g.setColor(tankColor);
 		g.fillRect(this.getX(), this.getY(), 64, 64);
 
-		g.setColor(towerColor); //new Color(255, 0, 0)
+		g.setColor(towerColor);
 		if (this.getDirection() == Direction.UP) {
 			g.fillRect(this.getX() + 20, this.getY(), 24, 34);
 		} else if (this.getDirection() == Direction.DOWN) {

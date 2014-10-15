@@ -1,15 +1,19 @@
-package lesson6.tanksgame;
+package lesson6.tanksgame.bf;
 
 import java.awt.Color;
 import java.awt.Graphics;
+
+import lesson6.tanksgame.interfaces.IDestroyable;
+import lesson6.tanksgame.interfaces.IDrawable;
 
 public class Brick implements IDrawable, IDestroyable {
 	private int x;
 	private int y;
 	private Color color;
 	
-	private ActionField actionField;
-	private BattleField battleField;
+	public Brick() {
+		this.setColor(new Color(0, 0, 255)); //blue
+	}
 	
 	public Brick(int x, int y) {
 		this.setX(x);
@@ -17,15 +21,9 @@ public class Brick implements IDrawable, IDestroyable {
 		this.setColor(new Color(0, 0, 255)); //blue
 	}
 	
-	public Brick(ActionField af, BattleField bf) {
-		this.actionField = af;
-		this.battleField = bf;
-		this.setColor(new Color(0, 0, 255)); //blue
-	}
-	
 	@Override
 	public void destroy() {
-		battleField.updateQuadrant(y, x, " ");	
+		
 	}
 
 	@Override
