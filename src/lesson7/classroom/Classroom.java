@@ -15,6 +15,7 @@ public class Classroom {
 	}
 	
 	public void leave(Student s) {
+		System.out.println(s.toString() + " left the room!");
 		students.remove(s);
 	}
 	
@@ -22,12 +23,22 @@ public class Classroom {
 		return students.size();
 	}
 	
-	public boolean isPresent() {
-		return false;
+	public boolean isPresent(Student s) {
+		return students.contains(s);
+		
+//		for (int i = 0; i < students.toArray().length; i++) {
+//			if (students.get(i).getName() == s.getName() && students.get(i).getSurname() == s.getSurname()) {
+//				return true;
+//			}
+//		}
+//		return false;
 	}
 	
 	public void printStudentInfo() { //All students
-		System.out.println(students.toString());
+		for (int i = 0; i < students.toArray().length; i++) {
+			System.out.println(students.toArray()[i]);
+		}
+		//System.out.println(students.toString());
 	}
 
 	public List<Student> getStudents() {

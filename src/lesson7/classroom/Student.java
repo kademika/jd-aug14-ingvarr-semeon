@@ -34,6 +34,17 @@ public class Student {
 	
 	@Override
 	public String toString() {
-		return this.name + " " + this.surname + "\n";
+		return this.name + " " + this.surname;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Student) {
+			Student s = (Student) obj; //conditioning
+			if (name != null && name.equals(s.getName()) && surname != null && surname.equals(s.getSurname())){
+				return true;
+			}
+		}
+		return false;
 	}
 }
