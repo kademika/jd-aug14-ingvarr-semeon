@@ -20,7 +20,7 @@ public class ListSort {
 		streets.add("Urlivska St");
 		streets.add("Zdolbunivska St");
 		
-		Collections.sort(streets);
+		Collections.sort(streets); //case sensitive (without compareToIgnoreCase() method)
 		
 		for(String street : streets) {
 			System.out.println(street);
