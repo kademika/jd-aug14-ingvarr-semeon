@@ -22,7 +22,7 @@ public class SimpleLinkedList implements Iterable<Object> {
 	
 	private class SLLIterator implements Iterator<Object> {
 		private Node prev;
-		private Node cp;
+		private Node current;
 		
 		public SLLIterator() {
 		}
@@ -31,40 +31,40 @@ public class SimpleLinkedList implements Iterable<Object> {
 		public void remove() {
 			if (!hasNext() && prev == null ) {
 				//only one element
-				cp = null;
+				current = null;
 				root = null;
 			} else if (!hasNext() && prev != null) {
 				//last element
 				prev.ref = null;
-				cp = null;
+				current = null;
 			} else if (hasNext() && prev == null) {
 				//first element
-				root = cp.ref;
-				cp = root;
+				root = current.ref;
+				current = root;
 			} else {
 				//middle element
-				prev.ref = cp.ref;
-				cp = cp.ref;
+				prev.ref = current.ref;
+				current = current.ref;
 			}
 			size--;
 		}
 		
 		@Override
 		public boolean hasNext() {
-			return (cp == null && root != null) || (cp != null && cp.ref != null);
+			return (current == null && root != null) || (current != null && current.ref != null);
 		}
 
 		@Override
 		public Object next() {
-			if (cp == null && root != null) {
+			if (current == null && root != null) {
 				//first
-				cp = root;
-				return cp.obj;
+				current = root;
+				return current.obj;
 			}
 			if (hasNext()) {
-				prev = cp;
-				cp = cp.ref; //cp gets next element
-				return cp.obj;
+				prev = current;
+				current = current.ref; //cp gets next element
+				return current.obj;
 			}
 			throw new IllegalStateException("List has no more elements");
 		}
