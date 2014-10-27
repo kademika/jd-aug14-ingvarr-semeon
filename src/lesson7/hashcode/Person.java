@@ -6,10 +6,10 @@ public class Person {
 	private long salary;
 	private Address address;
 
-	public Person(String name, int age, long salart) {
+	public Person(String name, int age, long salary) {
 		this.name = name;
 		this.age = age;
-		this.salary = salart;
+		this.salary = salary;
 	}
 
 	@Override
@@ -36,6 +36,11 @@ public class Person {
 		// result = 37 * result + (int)(value ^ (value >>> 32)); //more faster
 		// implementation (copy)
 		return result;
+	}
+	
+	public String toString() {
+		return this.getName() + ", " + this.getAge() + ", $" + this.getSalary();
+		
 	}
 
 	public String getName() {
