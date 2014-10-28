@@ -9,6 +9,8 @@ public class ListSort {
 
 	public static void main(String[] args) {
 		List<String> streets = new ArrayList<>();
+		//ArrayList<String> streets2 = new ArrayList<>(); //What is different in syntax?
+		//ArrayList streets3 = new ArrayList();
 		streets.add("Mykoly Bazhana Ave");
 		streets.add("Elyzavety Chavdar St");
 		streets.add("Borysa Hmyri St");
