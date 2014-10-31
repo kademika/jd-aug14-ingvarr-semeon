@@ -13,4 +13,5 @@ public class ListCollection {
 	List <List<Integer>>  nembersL = new ArrayList <>();
 	
 	List <Double> numbersD = new LinkedList <>();
+	
 }

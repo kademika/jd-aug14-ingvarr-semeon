@@ -2,7 +2,7 @@ package lesson7.ownlist;
 
 import java.util.Iterator;
 
-public class ListLauncher {
+public class LinkedListLauncher {
 
 	public static void main(String[] args) {
 		
