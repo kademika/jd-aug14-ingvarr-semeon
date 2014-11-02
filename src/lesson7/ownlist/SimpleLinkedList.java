@@ -63,7 +63,7 @@ public class SimpleLinkedList implements Iterable<Object> {
 			}
 			if (hasNext()) {
 				prev = current;
-				current = current.ref; //cp gets next element
+				current = current.ref; //current gets next element
 				return current.obj;
 			}
 			throw new IllegalStateException("List has no more elements");
@@ -89,10 +89,10 @@ public class SimpleLinkedList implements Iterable<Object> {
 			root = node;
 		} else {
 			Node last = root;
-			Node cp = root;
-			while (cp.ref != null) { //what about array step???
-				last = cp;
-				cp = cp.ref;
+			Node current = root;
+			while (current.ref != null) {
+				last = current;
+				current = current.ref;
 			}
 			last.ref = node;
 		}
@@ -103,15 +103,15 @@ public class SimpleLinkedList implements Iterable<Object> {
 		Node node = new Node();
 		node.obj = obj;
 		Node prevPointer = null;
-		Node cp = root;
+		Node current = root;
 		
 		do {
-			if (cp.obj == prev) {
-				prevPointer = cp;
+			if (current.obj == prev) {
+				prevPointer = current;
 				break;
 			}
-			cp = cp.ref;
-		} while (cp != null && cp.ref != null); //what about array step???
+			current = current.ref;
+		} while (current != null && current.ref != null);
 			
 		if (prevPointer == null) {
 			throw new IllegalStateException("List does not contain prev object.");
@@ -135,12 +135,12 @@ public class SimpleLinkedList implements Iterable<Object> {
 		}
 		
 		System.out.print("{");
-		Node cp = root;
-		while (cp.ref != null) {
-			System.out.print(cp.obj + ", ");
-			cp = cp.ref;		
+		Node current = root;
+		while (current.ref != null) {
+			System.out.print(current.obj + ", ");
+			current = current.ref;		
 		}
-		System.out.println(cp.obj + "}");
+		System.out.println(current.obj + "}");
 	}
 	
 }
