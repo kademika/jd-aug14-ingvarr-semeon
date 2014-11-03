@@ -74,8 +74,8 @@ public class SimpleLinkedList implements Iterable<Object> {
 		Node node = new Node();
 		node.obj = obj;
 		
-		if (root != null) {
-			node.ref = root;
+		if (this.root != null) {
+			node.ref = this.root;
 		}
 		root = node;
 		size++;

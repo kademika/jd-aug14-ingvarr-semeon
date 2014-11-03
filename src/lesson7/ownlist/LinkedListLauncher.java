@@ -24,44 +24,44 @@ public class LinkedListLauncher {
 		System.out.print(sll.getSize() + " list elements: ");
 		sll.printList();
 		
-		String middle = "middle";
+//		String middle = "middle";
+//		
+//		sll.addAfter(middle, mark);
+//		System.out.print(sll.getSize() + " list elements: ");
+//		sll.printList();
+//		
+//		sll.addAfter("middle (-1)", mark);
+//		System.out.print(sll.getSize() + " list elements: ");
+//		sll.printList();
 		
-		sll.addAfter(middle, mark);
-		System.out.print(sll.getSize() + " list elements: ");
-		sll.printList();
-		
-		sll.addAfter("middle (-1)", mark);
-		System.out.print(sll.getSize() + " list elements: ");
-		sll.printList();
-		
-		System.out.println();
-		System.err.println("test addAfter method, list size == 1");
-		System.out.println();
-		
-		sll = new SimpleLinkedList(); ////
-		
-		sll.addLast(mark);
-		System.out.print(sll.getSize() + " list elements: ");
-		sll.printList();
-		
-		sll.addAfter("last", mark);
-		System.out.print(sll.getSize() + " list elements: ");
-		sll.printList();
-		
-		System.out.println();
-		System.err.println("test addAfter method, no prev element exception");
-		System.out.println();
-		
-		sll = new SimpleLinkedList(); ////
-		
-		sll.addLast("element");
-		System.out.print(sll.getSize() + " list elements: ");
-		sll.printList();
-		System.out.println();
-		
-		sll.addAfter("last", mark);
-		System.out.print(sll.getSize() + " list elements: ");
-		sll.printList();
+//		System.out.println();
+//		System.err.println("test addAfter method, list size == 1");
+//		System.out.println();
+//		
+//		sll = new SimpleLinkedList(); ////
+//		
+//		sll.addLast(mark);
+//		System.out.print(sll.getSize() + " list elements: ");
+//		sll.printList();
+//		
+//		sll.addAfter("last", mark);
+//		System.out.print(sll.getSize() + " list elements: ");
+//		sll.printList();
+//		
+//		System.out.println();
+//		System.err.println("test addAfter method, no prev element exception");
+//		System.out.println();
+//		
+//		sll = new SimpleLinkedList(); ////
+//		
+//		sll.addLast("element");
+//		System.out.print(sll.getSize() + " list elements: ");
+//		sll.printList();
+//		System.out.println();
+//		
+//		sll.addAfter("last", mark);
+//		System.out.print(sll.getSize() + " list elements: ");
+//		sll.printList();
 		
 		
 //		System.err.println("Test iterator");
@@ -100,6 +100,7 @@ public class LinkedListLauncher {
 //		}
 //		System.out.println("One element was removed:");
 //		sll.printList();
+	
 	}
 
 }
