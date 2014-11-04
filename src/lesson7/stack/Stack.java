@@ -3,7 +3,7 @@ package lesson7.stack;
 //LIFO (Last In First Out)
 
 public class Stack {
-	private Node root;
+	private Node top;
 	private int size;
 	
 	private class Node {
@@ -19,37 +19,44 @@ public class Stack {
 		Node node = new Node();
 		node.obj = obj;
 		
-		if (root == null) {
-			root = node;
-		} else {
-			Node last = root;
-			Node current = root;
-			while (current.ref != null) {
-				last = current;
-				current = current.ref;
-			}
-			last.ref = node;
+		if (top != null) {
+			node.ref = top;
 		}
+		top = node;
 		size++;
 	}
 	
 	public Object pop() {
-		
-		return null;
+		Object result = top;
+		if (top == null) {
+			return null;
+		} else {
+			top = top.ref;
+			return result;
+		}
 	}
 	
 	public Object peak() {
+		if (top == null) {
+			return null;
+		} else {
+			return top;
+		}
+	}
+	
+	public String toString() {
+		return (String) top.obj;
 		
-		return null;
 	}
 	
 	public void printStack() {
 		if (size == 0) {
 			System.out.println("Stack is empty");
+			return;
 		}
 		
 		System.out.print("{");
-		Node current = root;
+		Node current = top;
 		while (current.ref != null) {
 			System.out.print(current.obj + ", ");
 			current = current.ref;		

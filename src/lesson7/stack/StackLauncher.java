@@ -8,7 +8,13 @@ public class StackLauncher {
 		st.push(66);
 		st.push(99);
 		st.printStack();
-
+		
+		st.peak();
+		st.printStack();
+		
+		st.pop();
+		st.printStack();
+		
 	}
 
 }

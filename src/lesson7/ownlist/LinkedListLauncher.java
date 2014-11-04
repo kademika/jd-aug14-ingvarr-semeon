@@ -21,53 +21,55 @@ public class LinkedListLauncher {
 		
 		sll.addLast(mark);
 		sll.addLast("last");
+		sll.addLast("LAST");
 		System.out.print(sll.getSize() + " list elements: ");
 		sll.printList();
 		
-//		String middle = "middle";
-//		
-//		sll.addAfter(middle, mark);
-//		System.out.print(sll.getSize() + " list elements: ");
-//		sll.printList();
-//		
-//		sll.addAfter("middle (-1)", mark);
-//		System.out.print(sll.getSize() + " list elements: ");
-//		sll.printList();
+		String middle = "middle";
 		
-//		System.out.println();
-//		System.err.println("test addAfter method, list size == 1");
-//		System.out.println();
-//		
-//		sll = new SimpleLinkedList(); ////
-//		
-//		sll.addLast(mark);
-//		System.out.print(sll.getSize() + " list elements: ");
-//		sll.printList();
-//		
-//		sll.addAfter("last", mark);
-//		System.out.print(sll.getSize() + " list elements: ");
-//		sll.printList();
-//		
-//		System.out.println();
-//		System.err.println("test addAfter method, no prev element exception");
-//		System.out.println();
-//		
-//		sll = new SimpleLinkedList(); ////
-//		
-//		sll.addLast("element");
-//		System.out.print(sll.getSize() + " list elements: ");
-//		sll.printList();
-//		System.out.println();
-//		
-//		sll.addAfter("last", mark);
-//		System.out.print(sll.getSize() + " list elements: ");
-//		sll.printList();
+		sll.addAfter(middle, mark);
+		System.out.print(sll.getSize() + " list elements: ");
+		sll.printList();
+		
+		sll.addAfter("middle (-1)", mark);
+		System.out.print(sll.getSize() + " list elements: ");
+		sll.printList();
+		
+		System.out.println();
+		System.err.println("test addAfter method, list size == 1");
+		System.out.println();
+		
+		sll = new SimpleLinkedList(); ////
+		
+		sll.addLast(mark);
+		System.out.print(sll.getSize() + " list elements: ");
+		sll.printList();
+		
+		sll.addAfter("last", mark);
+		System.out.print(sll.getSize() + " list elements: ");
+		sll.printList();
+		
+		System.out.println();
+		System.err.println("test addAfter method, no prev element exception");
+		System.out.println();
+		
+		sll = new SimpleLinkedList(); ////
+		
+		sll.addLast("element");
+		System.out.print(sll.getSize() + " list elements: ");
+		sll.printList();
+		System.out.println();
+		
+		sll.addAfter("last", mark);
+		System.out.print(sll.getSize() + " list elements: ");
+		sll.printList();
 		
 		
 //		System.err.println("Test iterator");
 //		System.out.println();
 //		
-//		SimpleLinkedList sll = new SimpleLinkedList();
+//		/*SimpleLinkedList*/ sll = new SimpleLinkedList(); ////
+//		
 //		sll.addFirst("third");
 //		sll.addFirst("second");
 //		sll.addFirst("first");

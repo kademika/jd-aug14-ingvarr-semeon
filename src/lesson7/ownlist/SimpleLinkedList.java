@@ -74,8 +74,8 @@ public class SimpleLinkedList implements Iterable<Object> {
 		Node node = new Node();
 		node.obj = obj;
 		
-		if (this.root != null) {
-			node.ref = this.root;
+		if (root != null) {
+			node.ref = root;
 		}
 		root = node;
 		size++;
@@ -88,11 +88,17 @@ public class SimpleLinkedList implements Iterable<Object> {
 		if (root == null) {
 			root = node;
 		} else {
+//			Node last = root; //Code bug in logic
+//			Node current = root;
+//			while (current.ref != null) {
+//				last = current;
+//				current = current.ref;
+//			}
+//			last = current;
+//			last.ref = node;
 			Node last = root;
-			Node current = root;
-			while (current.ref != null) {
-				last = current;
-				current = current.ref;
+			while (last.ref != null) {
+				last = last.ref;
 			}
 			last.ref = node;
 		}
@@ -132,6 +138,7 @@ public class SimpleLinkedList implements Iterable<Object> {
 	public void printList() {
 		if (size == 0) {
 			System.out.println("List is empty");
+			return;
 		}
 		
 		System.out.print("{");
