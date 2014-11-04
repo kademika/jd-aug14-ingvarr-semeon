@@ -94,7 +94,7 @@ public class SimpleLinkedList implements Iterable<Object> {
 //				last = current;
 //				current = current.ref;
 //			}
-//			last = current;
+//			last = current; //bug fix
 //			last.ref = node;
 			Node last = root;
 			while (last.ref != null) {

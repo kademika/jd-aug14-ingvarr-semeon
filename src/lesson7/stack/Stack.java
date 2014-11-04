@@ -27,7 +27,7 @@ public class Stack {
 	}
 	
 	public Object pop() {
-		Object result = top;
+		Object result = top.obj;
 		if (top == null) {
 			return null;
 		} else {
@@ -40,13 +40,8 @@ public class Stack {
 		if (top == null) {
 			return null;
 		} else {
-			return top;
+			return top.obj;
 		}
-	}
-	
-	public String toString() {
-		return (String) top.obj;
-		
 	}
 	
 	public void printStack() {
@@ -55,8 +50,8 @@ public class Stack {
 			return;
 		}
 		
-		System.out.print("{");
 		Node current = top;
+		System.out.print("{");
 		while (current.ref != null) {
 			System.out.print(current.obj + ", ");
 			current = current.ref;		
