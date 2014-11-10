@@ -21,27 +21,9 @@ public class BT7 extends AbstractTank {
 		towerColor = new Color(255, 200, 0); //yellow
 	}
 	
-	private Object[] actoins = new Object[] {
-			Action.FIRE,
-			Action.MOVE,
-			Action.FIRE,
-			Action.MOVE,
-			Action.FIRE
-		};
-		
-	private int step = 0;
-		
 	@Override
 	public Action setUp() {
-		if (step >= actoins.length) {
-			step = 0;
-		}
-		if (!(actoins[step] instanceof Action)) {
-			turn((Direction) actoins[step++]);
-		}
-		if (step >= actoins.length) {
-			step = 0;
-		}
-		return (Action) actoins[step++];
+		return Action.MOVETO;
 	}
+	
 }

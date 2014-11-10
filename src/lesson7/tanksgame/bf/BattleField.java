@@ -106,7 +106,7 @@ public class BattleField implements Drawable {
 //		} else {
 //			return "320_320";
 //		}
-		return "256_0";
+		return "128_0";
 	}
 
 	public int getBfWidth() {

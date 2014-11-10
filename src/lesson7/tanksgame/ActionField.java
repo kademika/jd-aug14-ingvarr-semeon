@@ -48,15 +48,81 @@ public class ActionField extends JPanel {
 	
 	private void processAction(Action a, Tank t) throws Exception {
 		if (a == Action.MOVE) {
-			processMove(t);
+			try {
+				processMove(t);
+			} catch (ObstacleException e) {
+				processFire(t.fire());
+				System.out.println("*Obstacle destroyed*");
+			} finally {
+			}
 		} else if (a == Action.FIRE) {
 			processTurn(t);
 			processFire(t.fire());
+		} else if (a == Action.MOVETO) {
+			processMoveToQuadrant(t, 5, 5);
 		}
 	}
 
 	private void processTurn(Tank tank) throws Exception {
 		repaint();
+	}
+	
+	private void processMoveToQuadrant(Tank tank, int v, int h) throws Exception {
+		String targetXY = getQuadrantXY(v, h);
+		int targetX = Integer.parseInt(targetXY.substring(0,
+				targetXY.indexOf("_")));
+		int targetY = Integer.parseInt(targetXY.substring(
+				targetXY.indexOf("_") + 1, targetXY.length()));
+		int stepPixels = 64;
+		int directionX = 0;
+		int directionY = 0;
+		int stepsXQty = 0;
+		int stepsYQty = 0;
+
+		System.out.println("[target coordinates]: " + targetX + ", " + targetY);
+
+		if (tank.getX() < targetX) {
+//			directionX = 4; // right
+			tank.turn(Direction.RIGHT);
+			stepsXQty = (targetX - tank.getX()) / stepPixels;
+		} else if (tank.getX() > targetX) {
+			directionX = 3; // left
+			stepsXQty = (tank.getX() - targetX) / stepPixels;
+		}
+
+		if (tank.getY() < targetY) {
+//			directionY = 2; // down
+			tank.turn(Direction.DOWN);
+			stepsYQty = (targetY - tank.getY()) / stepPixels;
+		} else if (tank.getY() > targetY) {
+//			directionY = 1; // up
+			tank.turn(Direction.UP);
+			stepsYQty = (tank.getY() - targetY) / stepPixels;
+		}
+
+		if (directionX > 0 && stepsXQty > 0) {
+			while (stepsXQty > 0) {
+				//move(directionX);
+				processMove(tank);//
+				stepsXQty -= 1;
+			}
+		}
+
+		if (directionY > 0 && stepsYQty > 0) {
+			while (stepsYQty > 0) {
+				//move(directionY);
+				processMove(tank);//
+				stepsYQty -= 1;
+			}
+		}
+
+		System.out.println("[current coordinates]: " + "tankX = "
+				+ tank.getX() + ", tankY = " + tank.getY());
+
+	}
+	
+	private String getQuadrantXY(int v, int h) {
+		return (v - 1) * 64 + "_" + (h - 1) * 64;
 	}
 
 	private void processMove(Tank tank) throws Exception {
@@ -74,7 +140,7 @@ public class ActionField extends JPanel {
 			// check limits x: 0, 513; y: 0, 513
 			if ((direction == Direction.UP && tank.getY() == 0) || (direction == Direction.DOWN && tank.getY() >= 512)
 					|| (direction == Direction.LEFT && tank.getX() == 0) || (direction == Direction.RIGHT && tank.getX() >= 512)) {
-				System.out.println("[illegal move] direction: " + direction
+				System.out.println("[Battlefield Borders] direction: " + direction
 						+ " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				return;
 			}
@@ -91,9 +157,10 @@ public class ActionField extends JPanel {
 			}
 			BFObject bfobject = battleField.scanQuadrant(v, h);
 			if (!(bfobject instanceof Blank) && !bfobject.isDestroyed()) {
-				System.out.println("[illegal move] direction: " + direction
-						+ " tankX: " + tank.getX() + ", tankY: " + tank.getY());
-				return;
+//				System.out.println("[illegal move] direction: " + direction
+//						+ " tankX: " + tank.getX() + ", tankY: " + tank.getY());
+				throw new ObstacleException();
+//				return;
 			}
 	
 

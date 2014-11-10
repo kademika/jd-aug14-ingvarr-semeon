@@ -7,6 +7,8 @@ import lesson7.tanksgame.bf.Drawable;
 public interface Tank extends Drawable, Destroyable {
 	
 	public Action setUp();
+	
+	public void turn(Direction direction);
 
 	public void move();
 
