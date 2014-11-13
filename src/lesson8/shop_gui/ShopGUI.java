@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 public class ShopGUI {
 
 	private Shop shop;
+	private JTextField textFieldName;
 
 	public ShopGUI(Shop shop) {
 		this.shop = shop;
@@ -54,7 +55,7 @@ public class ShopGUI {
 		panel.add(labelSurame, new GridBagConstraints(0, 1, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		final JTextField textFieldSurname = new JTextField(); /////////////////////////// final ???
+		final JTextField textFieldSurname = new JTextField(); ////////////////////////////////////////// final ???
 		textFieldSurname.setColumns(11);
 		panel.add(textFieldSurname, new GridBagConstraints(1, 1, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -63,7 +64,7 @@ public class ShopGUI {
 		panel.add(labelPhoneNumber, new GridBagConstraints(0, 2, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		final JTextField textFieldPhoneNumber = new JTextField("+380"); ////////////// final ???
+		final JTextField textFieldPhoneNumber = new JTextField("+380"); /////////////////////////////// final ???
 		textFieldPhoneNumber.setColumns(11);
 		panel.add(textFieldPhoneNumber, new GridBagConstraints(1, 2, 1, 1, 0, 0, 
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -84,8 +85,8 @@ public class ShopGUI {
 		panel.add(labelCar, new GridBagConstraints(0, 4, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		final Car[] products = shop.getGarage(); //////////////////////////////////// final ???
-		final JComboBox productsList = new JComboBox(products); ///////////////////// final ???
+		final Car[] products = shop.getGarage(); ///////////////////////////////////////////////////// final ???
+		final JComboBox productsList = new JComboBox(products); ////////////////////////////////////// final ???
 		panel.add(productsList, new GridBagConstraints(1, 4, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 		
@@ -109,16 +110,16 @@ public class ShopGUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String name = textFieldName.getText();
-				String surname = textFieldSurname.getText();
-				String phone = textFieldPhoneNumber.getText();
+				String name = textFieldName.getText(); //////////////////////////// Change modifier to final
+				String surname = textFieldSurname.getText(); ////////////////////// Change modifier to final
+				String phone = textFieldPhoneNumber.getText(); //////////////////// Change modifier to final
 				
 				Customer customer = new Customer(name, surname, phone);
 				
-				Car car = products[productsList.getSelectedIndex()];
+				Car car = products[productsList.getSelectedIndex()]; ////////////// Change modifier to final
 				//Car car = (Car) productsList.getSelectedItem();
 				
-				String date = textFieldDate.getText();
+				String date = textFieldDate.getText(); //////////////////////////// Change modifier to final
 
 				shop.sell(date, car, customer);
 			}
