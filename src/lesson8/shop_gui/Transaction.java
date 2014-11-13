@@ -2,12 +2,12 @@ package lesson8.shop_gui;
 
 public class Transaction {
 	private int id;
-	private String ddmmyyyy;
+	private String date;
 	private Customer customer;
 	private Car car;
 	
-	public Transaction(String ddmmyyyy, Customer customer, Car car) {
-		this.setDate(ddmmyyyy);
+	public Transaction(String date, Customer customer, Car car) {
+		this.setDate(date);
 		this.setCustomer(customer);
 		this.setCar(car);
 		this.setId((int)(Math.random()*98) + 201); //201..299
@@ -16,13 +16,14 @@ public class Transaction {
 	@Override
 	public String toString() {
 		return this.getId() + " " 
-				+ this.getDate() + " " 
+				+ this.getDate() + "  " 
 				+ this.customer.getName() + " " 
-				+ this.customer.getSurname() + " " 
+				+ this.customer.getSurname() + " "
+				+ this.customer.getPhoneNumber() + "  "
 				+ this.car.getBodyType() + " " 
 				+ this.car.getBrend() + " " 
 				+ this.car.getModel() + " " 
-				+ this.car.getPrice() ;
+				+ this.car.getPrice() + " USD";
 	}
 
 	public int getId() {
@@ -34,11 +35,11 @@ public class Transaction {
 	}
 	
 	public String getDate() {
-		return ddmmyyyy;
+		return date;
 	}
 
 	public void setDate(String ddmmyyyy) {
-		this.ddmmyyyy = ddmmyyyy;
+		this.date = ddmmyyyy;
 	}
 
 	public Customer getCustomer() {

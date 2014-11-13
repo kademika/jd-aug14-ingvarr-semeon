@@ -44,13 +44,13 @@ public class Shop {
 		return garage;
 	}
 
-	public void sell(String dd_mm_yyyy, Car car, Customer customer) {
+	public void sell(String date, Car car, Customer customer) {
 		Car carForSale = this.getCar(car.getBrend(), car.getModel(),
 				car.getColor(), car.getCapacity(), car.getGearbox());
 		
 		customer.setOwnCar(carForSale);
 		this.handOut(carForSale);
-		this.registerTransaction(dd_mm_yyyy, customer, carForSale);
+		this.registerTransaction(date, customer, carForSale);
 		System.out.println(car.getBodyType() + " " 
 						+ car.getBrend() + " " 
 						+ car.getModel() + " " 

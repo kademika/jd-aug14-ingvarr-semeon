@@ -20,7 +20,7 @@ public class Window extends JPanel{
 	public Window() {
 		JFrame jf = new JFrame("Window");
 		jf.setLocation(300, 100);
-		jf.setMinimumSize(new Dimension(520, 535)); //What different:  jf.setSize(520, 535); ???
+		jf.setMinimumSize(new Dimension(670, 535)); //What different:  jf.setSize(520, 535); ???
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		jf.getContentPane().add(this);
@@ -34,14 +34,14 @@ public class Window extends JPanel{
 		super.paintComponent(g);
 		
 		g.setColor(Color.WHITE);
-		g.draw3DRect(50, 50, 400, 400, false);
+		g.draw3DRect(50, 50, 550, 400, false);
 		
 		g.setColor(Color.BLACK);
 		g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 32));
-		g.drawString("Hello Java Text", 100, 100);
+		g.drawString("Hello Java Swing Components", 70, 100);
 		
 		try {
-			g.drawImage(ImageIO.read(new File(IMAGE_FILE)), 180, 200, new ImageObserver() {
+			g.drawImage(ImageIO.read(new File(IMAGE_FILE)), 250, 200, new ImageObserver() {
 				
 				@Override
 				public boolean imageUpdate(Image img, int infoflags, int x, int y,
