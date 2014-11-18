@@ -117,7 +117,6 @@ public class ShopGUI {
 				Customer customer = new Customer(name, surname, phone);
 				
 				Car car = products[productsList.getSelectedIndex()]; ////////////// Change modifier to final
-				//Car car = (Car) productsList.getSelectedItem();
 				
 				String date = textFieldDate.getText(); //////////////////////////// Change modifier to final
 
