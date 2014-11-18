@@ -39,17 +39,17 @@ public class T34 extends AbstractTank {
 	}
 
 	private Object[] actoins = new Object[] {
-		Direction.RIGHT,
-		Action.FIRE,
-		Action.MOVE,
-		Action.FIRE,
-		Action.MOVE,
-		Action.FIRE,
-		Action.FIRE
-	};
-	
+			Action.TURN_RIGHT,
+			Action.FIRE,
+			Action.MOVE,
+			Action.FIRE,
+			Action.MOVE,
+			Action.FIRE,
+			Action.FIRE
+		};
+		
 	private int step = 0;
-	
+		
 	@Override
 	public Action setUp() {
 		if (step >= actoins.length) {

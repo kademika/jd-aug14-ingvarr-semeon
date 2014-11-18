@@ -40,9 +40,30 @@ public class BT7 extends AbstractTank {
 		}	
 	}
 	
+	private Object[] actoins = new Object[] {
+		Action.TURN_DOWN,
+		Action.FIRE,
+		Action.MOVE,
+		Action.TURN_RIGHT,
+		Action.FIRE,
+		Action.MOVE,
+		Action.FIRE,
+		Action.FIRE
+	};
+		
+	private int step = 0;
+		
 	@Override
 	public Action setUp() {
-		return Action.MOVETO;
+		if (step >= actoins.length) {
+			step = 0;
+		}
+		if (!(actoins[step] instanceof Action)) {
+			turn((Direction) actoins[step++]);
+		}
+		if (step >= actoins.length) {
+			step = 0;
+		}
+		return (Action) actoins[step++];
 	}
-	
 }

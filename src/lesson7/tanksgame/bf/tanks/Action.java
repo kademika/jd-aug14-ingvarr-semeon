@@ -2,7 +2,5 @@ package lesson7.tanksgame.bf.tanks;
 
 public enum Action {
 	
-	NONE, MOVE, FIRE, MOVETO;
-	
-//	, TURN_UP, TURN_RIGHT, TURN_LEFT, TURN_DOWN;
+	NONE, MOVE, FIRE, TURN_UP, TURN_RIGHT, TURN_LEFT, TURN_DOWN;
 }

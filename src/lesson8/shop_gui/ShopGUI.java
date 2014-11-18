@@ -22,6 +22,7 @@ public class ShopGUI {
 
 	private Shop shop;
 	private JTextField textFieldName;
+	private JTextField textFieldSurname;
 
 	public ShopGUI(Shop shop) {
 		this.shop = shop;
@@ -46,7 +47,7 @@ public class ShopGUI {
 		panel.add(labelName, new GridBagConstraints(0, 0, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		final JTextField textFieldName = new JTextField(); /////////////////////////// final ???
+		textFieldName = new JTextField(); /////////////////////////// final ??? //shoul be global var
 		textFieldName.setColumns(11);
 		panel.add(textFieldName, new GridBagConstraints(1, 0, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -55,7 +56,7 @@ public class ShopGUI {
 		panel.add(labelSurame, new GridBagConstraints(0, 1, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		final JTextField textFieldSurname = new JTextField(); ////////////////////////////////////////// final ???
+		textFieldSurname = new JTextField(); ////////////////////////////////////////// final ???
 		textFieldSurname.setColumns(11);
 		panel.add(textFieldSurname, new GridBagConstraints(1, 1, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));

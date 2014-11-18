@@ -16,8 +16,6 @@ import lesson8.tanksgame.bf.tanks.BT7;
 import lesson8.tanksgame.bf.tanks.Bullet;
 import lesson8.tanksgame.bf.tanks.T34;
 import lesson8.tanksgame.bf.tanks.Tank;
-import lesson8.tanksgame.bf.tanks.Tiger;
-
 
 /**
  * Updated to object oriented style.
@@ -59,8 +57,14 @@ public class ActionField extends JPanel {
 		} else if (a == Action.FIRE) {
 			processTurn(t);
 			processFire(t.fire());
-		} else if (a == Action.MOVETO) {
-			processMoveToQuadrant(t, 5, 5);
+		} else if (a == Action.TURN_DOWN) {
+			t.turn(Direction.DOWN);
+		} else if (a == Action.TURN_UP) {
+			t.turn(Direction.UP);
+		} else if (a == Action.TURN_LEFT) {
+			t.turn(Direction.LEFT);
+		} else if (a == Action.TURN_RIGHT) {
+			t.turn(Direction.RIGHT);
 		}
 	}
 

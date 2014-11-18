@@ -16,7 +16,6 @@ import lesson7.tanksgame.bf.tanks.BT7;
 import lesson7.tanksgame.bf.tanks.Bullet;
 import lesson7.tanksgame.bf.tanks.T34;
 import lesson7.tanksgame.bf.tanks.Tank;
-import lesson7.tanksgame.bf.tanks.Tiger;
 
 /**
  * Updated to object oriented style.
@@ -58,8 +57,14 @@ public class ActionField extends JPanel {
 		} else if (a == Action.FIRE) {
 			processTurn(t);
 			processFire(t.fire());
-		} else if (a == Action.MOVETO) {
-			processMoveToQuadrant(t, 5, 5);
+		} else if (a == Action.TURN_DOWN) {
+			t.turn(Direction.DOWN);
+		} else if (a == Action.TURN_UP) {
+			t.turn(Direction.UP);
+		} else if (a == Action.TURN_LEFT) {
+			t.turn(Direction.LEFT);
+		} else if (a == Action.TURN_RIGHT) {
+			t.turn(Direction.RIGHT);
 		}
 	}
 
@@ -67,63 +72,63 @@ public class ActionField extends JPanel {
 		repaint();
 	}
 	
-	private void processMoveToQuadrant(Tank tank, int v, int h) throws Exception {
-		String targetXY = getQuadrantXY(v, h);
-		int targetX = Integer.parseInt(targetXY.substring(0,
-				targetXY.indexOf("_")));
-		int targetY = Integer.parseInt(targetXY.substring(
-				targetXY.indexOf("_") + 1, targetXY.length()));
-		int stepPixels = 64;
-		int directionX = 0;
-		int directionY = 0;
-		int stepsXQty = 0;
-		int stepsYQty = 0;
-
-		System.out.println("[target coordinates]: " + targetX + ", " + targetY);
-
-		if (tank.getX() < targetX) {
-//			directionX = 4; // right
-			tank.turn(Direction.RIGHT);
-			stepsXQty = (targetX - tank.getX()) / stepPixels;
-		} else if (tank.getX() > targetX) {
-			directionX = 3; // left
-			stepsXQty = (tank.getX() - targetX) / stepPixels;
-		}
-
-		if (tank.getY() < targetY) {
-//			directionY = 2; // down
-			tank.turn(Direction.DOWN);
-			stepsYQty = (targetY - tank.getY()) / stepPixels;
-		} else if (tank.getY() > targetY) {
-//			directionY = 1; // up
-			tank.turn(Direction.UP);
-			stepsYQty = (tank.getY() - targetY) / stepPixels;
-		}
-
-		if (directionX > 0 && stepsXQty > 0) {
-			while (stepsXQty > 0) {
-				//move(directionX);
-				processMove(tank);//
-				stepsXQty -= 1;
-			}
-		}
-
-		if (directionY > 0 && stepsYQty > 0) {
-			while (stepsYQty > 0) {
-				//move(directionY);
-				processMove(tank);//
-				stepsYQty -= 1;
-			}
-		}
-
-		System.out.println("[current coordinates]: " + "tankX = "
-				+ tank.getX() + ", tankY = " + tank.getY());
-
-	}
-	
-	private String getQuadrantXY(int v, int h) {
-		return (v - 1) * 64 + "_" + (h - 1) * 64;
-	}
+//	private void processMoveToQuadrant(Tank tank, int v, int h) throws Exception {
+//		String targetXY = getQuadrantXY(v, h);
+//		int targetX = Integer.parseInt(targetXY.substring(0,
+//				targetXY.indexOf("_")));
+//		int targetY = Integer.parseInt(targetXY.substring(
+//				targetXY.indexOf("_") + 1, targetXY.length()));
+//		int stepPixels = 64;
+//		int directionX = 0;
+//		int directionY = 0;
+//		int stepsXQty = 0;
+//		int stepsYQty = 0;
+//
+//		System.out.println("[target coordinates]: " + targetX + ", " + targetY);
+//
+//		if (tank.getX() < targetX) {
+////			directionX = 4; // right
+//			tank.turn(Direction.RIGHT);
+//			stepsXQty = (targetX - tank.getX()) / stepPixels;
+//		} else if (tank.getX() > targetX) {
+//			directionX = 3; // left
+//			stepsXQty = (tank.getX() - targetX) / stepPixels;
+//		}
+//
+//		if (tank.getY() < targetY) {
+////			directionY = 2; // down
+//			tank.turn(Direction.DOWN);
+//			stepsYQty = (targetY - tank.getY()) / stepPixels;
+//		} else if (tank.getY() > targetY) {
+////			directionY = 1; // up
+//			tank.turn(Direction.UP);
+//			stepsYQty = (tank.getY() - targetY) / stepPixels;
+//		}
+//
+//		if (directionX > 0 && stepsXQty > 0) {
+//			while (stepsXQty > 0) {
+//				//move(directionX);
+//				processMove(tank);//
+//				stepsXQty -= 1;
+//			}
+//		}
+//
+//		if (directionY > 0 && stepsYQty > 0) {
+//			while (stepsYQty > 0) {
+//				//move(directionY);
+//				processMove(tank);//
+//				stepsYQty -= 1;
+//			}
+//		}
+//
+//		System.out.println("[current coordinates]: " + "tankX = "
+//				+ tank.getX() + ", tankY = " + tank.getY());
+//
+//	}
+//	
+//	private String getQuadrantXY(int v, int h) {
+//		return (v - 1) * 64 + "_" + (h - 1) * 64;
+//	}
 
 	private void processMove(Tank tank) throws Exception {
 		processTurn(tank);
