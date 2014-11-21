@@ -17,7 +17,7 @@ public class BT7 extends AbstractTank {
 		movePath = 2;
 		tankColor = new Color(205, 0, 0); //dark red
 		towerColor = new Color(255, 200, 0); //yellow
-		setImages();
+		setImage();
 	}
 	
 	public BT7(BattleField bf, int x, int y, Direction direction) {
@@ -25,16 +25,16 @@ public class BT7 extends AbstractTank {
 		movePath = 2;
 		tankColor = new Color(205, 0, 0); //dark red
 		towerColor = new Color(255, 200, 0); //yellow
-		setImages();
+		setImage();
 	}
 	
-	private void setImages() {
+	private void setImage() {
 		images = new Image[4];
 		try {
-			images[0] = ImageIO.read(new File("red-top.png").getAbsoluteFile());
-			images[1] = ImageIO.read(new File("red-bottom.png").getAbsoluteFile());
-			images[2] = ImageIO.read(new File("red-left.png").getAbsoluteFile());
-			images[3] = ImageIO.read(new File("red-right.png").getAbsoluteFile());
+			images[0] = ImageIO.read(new File("tanks_img/red-top.png").getAbsoluteFile());
+			images[1] = ImageIO.read(new File("tanks_img/red-bottom.png").getAbsoluteFile());
+			images[2] = ImageIO.read(new File("tanks_img/red-left.png").getAbsoluteFile());
+			images[3] = ImageIO.read(new File("tanks_img/red-right.png").getAbsoluteFile());
 		} catch (IOException e) {
 			throw new IllegalStateException("(!)Can't find tank's image(!)");
 		}	

@@ -16,23 +16,23 @@ public class T34 extends AbstractTank {
 		super(bf, 128, 512, Direction.UP);
 		tankColor = new Color(0, 155, 0); //dark green
 		towerColor = new Color(255, 200, 0); //yellow
-		setImages();
+		setImage();
 	}
 	
 	public T34(BattleField bf, int x, int y, Direction direction) {
 		super(bf, x, y, direction);
 		tankColor = new Color(0, 155, 0); //dark green
 		towerColor = new Color(255, 200, 0); //yellow
-		setImages();
+		setImage();
 	}
 	
-	private void setImages() {
+	private void setImage() {
 		images = new Image[4];
 		try {
-			images[0] = ImageIO.read(new File("green-top.png").getAbsoluteFile());
-			images[1] = ImageIO.read(new File("green-bottom.png").getAbsoluteFile());
-			images[2] = ImageIO.read(new File("green-left.png").getAbsoluteFile());
-			images[3] = ImageIO.read(new File("green-right.png").getAbsoluteFile());
+			images[0] = ImageIO.read(new File("tanks_img/green-top.png").getAbsoluteFile());
+			images[1] = ImageIO.read(new File("tanks_img/green-bottom.png").getAbsoluteFile());
+			images[2] = ImageIO.read(new File("tanks_img/green-left.png").getAbsoluteFile());
+			images[3] = ImageIO.read(new File("tanks_img/green-right.png").getAbsoluteFile());
 		} catch (IOException e) {
 			throw new IllegalStateException("(!)Can't find tank's image(!)");
 		}	

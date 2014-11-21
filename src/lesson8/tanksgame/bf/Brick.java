@@ -10,9 +10,16 @@ public class Brick extends SimpleBFObject {
 
 	public Brick(int x, int y) {
 		super(x, y);
-		color = new Color(0, 0, 255);
+		try { 
+			setImage();
+		} catch(IllegalStateException e) {
+			color = new Color(180, 60, 0); //brown
+		}
+	}
+	
+	private void setImage() {
 		try {
-			image = ImageIO.read(new File("bricks.png").getAbsoluteFile());
+			image = ImageIO.read(new File("tanks_img/bricks.png").getAbsoluteFile());
 		} catch (IOException e) {
 			throw new IllegalStateException("(!)Can't find brick's image(!)");
 		}

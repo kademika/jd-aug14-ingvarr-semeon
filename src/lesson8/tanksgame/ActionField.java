@@ -12,10 +12,11 @@ import lesson8.tanksgame.bf.BFObject;
 import lesson8.tanksgame.bf.BattleField;
 import lesson8.tanksgame.bf.Blank;
 import lesson8.tanksgame.bf.tanks.Action;
-import lesson8.tanksgame.bf.tanks.BT7;
 import lesson8.tanksgame.bf.tanks.Bullet;
-import lesson8.tanksgame.bf.tanks.T34;
 import lesson8.tanksgame.bf.tanks.Tank;
+import lesson8.tanksgame.bf.tanks.BT7;
+import lesson8.tanksgame.bf.tanks.T34;
+import lesson8.tanksgame.bf.tanks.Tiger;
 
 /**
  * Updated to object oriented style.
