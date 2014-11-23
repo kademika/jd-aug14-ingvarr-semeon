@@ -12,6 +12,8 @@ public abstract class SimpleBFObject implements BFObject {
 	private int x;
 	private int y;
 	
+	protected final int QSIZE = 64;
+	
 	protected Color color;
 	
 	protected Image image;
@@ -32,8 +34,8 @@ public abstract class SimpleBFObject implements BFObject {
 	public void draw(Graphics g) {
 		if (!isDestroyed) {
 			if (image != null) {
-				g.drawImage(image, this.getX(), this.getY(), this.getX() + 64, this.getY() + 64, 
-						this.getX(), this.getY(), this.getX() + 64, this.getY() + 64, 
+				g.drawImage(image, this.getX(), this.getY(), this.getX() + QSIZE, this.getY() + QSIZE, 
+						this.getX(), this.getY(), this.getX() + QSIZE, this.getY() + QSIZE, 
 						new ImageObserver() {	
 							@Override
 							public boolean imageUpdate(Image img, int infoflags, int x, int y,
@@ -43,7 +45,7 @@ public abstract class SimpleBFObject implements BFObject {
 						});
 			} else {
 				g.setColor(this.color);
-				g.fillRect(this.getX(), this.getY(), 64, 64);
+				g.fillRect(this.getX(), this.getY(), QSIZE, QSIZE);
 			}
 		}
 	}
