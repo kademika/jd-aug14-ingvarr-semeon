@@ -19,7 +19,7 @@ public class Rock extends SimpleBFObject {
 	
 	private void setImage() {
 		try {
-			image = ImageIO.read(new File("tanks_img/rock.png").getAbsoluteFile());
+			image = ImageIO.read(new File("tanks_img/rock_texture.png").getAbsoluteFile());
 		} catch (IOException e) {
 			throw new IllegalStateException("(!)Can't find brick's image(!)");
 		}

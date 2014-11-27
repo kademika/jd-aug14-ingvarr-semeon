@@ -19,7 +19,7 @@ public class Water extends SimpleBFObject {
 	
 	private void setImage() {
 		try {
-			image = ImageIO.read(new File("tanks_img/water.png").getAbsoluteFile());
+			image = ImageIO.read(new File("tanks_img/water_texture.png").getAbsoluteFile());
 		} catch (IOException e) {
 			throw new IllegalStateException("(!)Can't find brick's image(!)");
 		}
