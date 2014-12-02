@@ -13,4 +13,16 @@ public class Newspaper extends Observable {
 		return title;
 	}
 	
+	public void prepareNewIssue() {
+		System.out.println("[The new issue of " + this.getTitle() + " was prepared for publication]");
+		setChanged();
+		notifyObservers();
+	}
+	
+	public void publishNewIssue() {
+		System.out.println("[The new issue of " + this.getTitle() + " was published]");
+		setChanged();
+		notifyObservers(new ActionEvent("publication"));
+	}
+	
 }
