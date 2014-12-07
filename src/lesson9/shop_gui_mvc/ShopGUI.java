@@ -4,10 +4,11 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.LayoutManager;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -16,6 +17,8 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class ShopGUI {
@@ -23,20 +26,71 @@ public class ShopGUI {
 	private Shop shop;
 	private JTextField textFieldName;
 	private JTextField textFieldSurname;
+	private JTextField textFieldPhoneNumber;
+	private JFormattedTextField textFieldDate;
+	private JComboBox productsList;
+//	private JPanel TransactionsListTablePanel;
+	
 
 	public ShopGUI(Shop shop) {
 		this.shop = shop;
 
-		JFrame f = new JFrame("Car Shop 1.0");
+		JFrame frame = new JFrame("Car Shop 2.0");
 
-		f.setLocation(100, 100);
-		f.setMinimumSize(new Dimension(240, 240));
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocation(100, 100);
+		frame.setMinimumSize(new Dimension(240, 240));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		f.getContentPane().add(createSellingPanel());
+		frame.getContentPane().add(createSellingPanel());
 
-		f.pack();
-		f.setVisible(true);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	private void showTransactionsListTablePanelGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("Transactions List");
+        frame.setLocation(100, 100);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
+        //Create and set up the content pane.
+        JPanel tableContentPane = createTransactionsListTablePanel();
+        frame.setContentPane(tableContentPane);
+
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+	}
+	
+	private JPanel createTransactionsListTablePanel() {
+		JPanel TLTPanel = new JPanel();
+		String[] columnNames = {"ID"
+								, "Date"
+								, "Name"
+								, "Surname"
+								, "Phone"
+								, "Body Type"
+								, "Brend"
+								, "Model"
+								, "Price"};
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy kk:mm:ss");
+		
+		Object[][] data = {
+				{"001", dateFormat.format(new Date()), "Name", "Surname", "Phone"
+					, "Body Type", "Brend", "Model", "Price"}
+		};
+		
+		JTable transactionsTable = new JTable(data, columnNames);
+		transactionsTable.getColumnModel().getColumn(1).setPreferredWidth(140);
+		
+		 //Create the scroll pane and add the table to it.
+        JScrollPane scrollPane = new JScrollPane(transactionsTable);
+        
+        //Add the scroll pane to this panel.
+        TLTPanel.add(scrollPane);
+        
+        return TLTPanel;
 	}
 
 	private JPanel createSellingPanel() {
@@ -47,7 +101,7 @@ public class ShopGUI {
 		panel.add(labelName, new GridBagConstraints(0, 0, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		textFieldName = new JTextField(); /////////////////////////// final ??? //shoul be global var
+		textFieldName = new JTextField(); //////////////////////////////////////// final ??? //should be global var
 		textFieldName.setColumns(11);
 		panel.add(textFieldName, new GridBagConstraints(1, 0, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -56,7 +110,7 @@ public class ShopGUI {
 		panel.add(labelSurame, new GridBagConstraints(0, 1, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		textFieldSurname = new JTextField(); ////////////////////////////////////////// final ???
+		textFieldSurname = new JTextField(); ///////////////////////////////////// final ??? //should be global var
 		textFieldSurname.setColumns(11);
 		panel.add(textFieldSurname, new GridBagConstraints(1, 1, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -65,7 +119,7 @@ public class ShopGUI {
 		panel.add(labelPhoneNumber, new GridBagConstraints(0, 2, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		final JTextField textFieldPhoneNumber = new JTextField("+380"); /////////////////////////////// final ???
+		textFieldPhoneNumber = new JTextField("+380"); /////////////////////////// final ??? //should be global var
 		textFieldPhoneNumber.setColumns(11);
 		panel.add(textFieldPhoneNumber, new GridBagConstraints(1, 2, 1, 1, 0, 0, 
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -76,7 +130,7 @@ public class ShopGUI {
 		
 		Date today = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy kk:mm:ss");
-		final JFormattedTextField textFieldDate = new JFormattedTextField(dateFormat.format(today)); // final ???
+		textFieldDate = new JFormattedTextField(dateFormat.format(today)); // final ???
 		textFieldDate.setColumns(11);
 		panel.add(textFieldDate, new GridBagConstraints(1, 3, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -86,8 +140,8 @@ public class ShopGUI {
 		panel.add(labelCar, new GridBagConstraints(0, 4, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		final Car[] products = shop.getGarage(); ///////////////////////////////////////////////////// final ???
-		final JComboBox productsList = new JComboBox(products); ////////////////////////////////////// final ???
+		final Car[] products = shop.getGarage(); //////////////////////////////////// should be final or global var
+		productsList = new JComboBox(products); ////////////////////////////////// final ??? //should be global var
 		panel.add(productsList, new GridBagConstraints(1, 4, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 		
@@ -130,6 +184,7 @@ public class ShopGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				shop.outTransactionsList();
+				showTransactionsListTablePanelGUI();
 			}
 		});
 		

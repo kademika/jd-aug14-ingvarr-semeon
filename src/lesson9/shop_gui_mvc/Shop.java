@@ -153,6 +153,10 @@ public class Shop {
 		}
 	}
 	
+	public Transaction[] getAllTransactions() {
+		return transactions;
+	}
+	
 	public void weeklySalesReport() {
 		this.transactionsCount();
 		System.out.println();
