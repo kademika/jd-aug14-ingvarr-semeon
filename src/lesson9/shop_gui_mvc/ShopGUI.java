@@ -1,9 +1,12 @@
 package lesson9.shop_gui_mvc;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.SplashScreen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -26,7 +29,9 @@ import javax.swing.JTextField;
 public class ShopGUI {
 
 	private Shop shop;
+	private Car[] products;
 	private JFrame frame;
+	private JFrame tFrame;
 	private JTextField textFieldName;
 	private JTextField textFieldSurname;
 	private JTextField textFieldPhoneNumber;
@@ -34,7 +39,19 @@ public class ShopGUI {
 	private JComboBox<Object> productsList;
 	private JTable transactionsTable;
 	
-	public ShopGUI(Shop shop) {
+	public ShopGUI(Shop shop) throws Exception {
+		
+		SplashScreen splash = SplashScreen.getSplashScreen();
+		Thread.sleep(1000);
+		
+		Graphics2D g2d = splash.createGraphics();
+		g2d.setColor(Color.WHITE);
+		g2d.drawString("Car Shop Loading...", 35, 80);
+		splash.update();
+		
+		Thread.sleep(4000);
+		splash.close();
+		
 		this.shop = shop;
 		
 		//Create and set up the window
@@ -70,32 +87,35 @@ public class ShopGUI {
 		//Create and set up the menu bar
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.add(menuActions);
-		
 		frame.getRootPane().setJMenuBar(menuBar);
+		
+		//Display the window
 		frame.pack();
 		frame.setVisible(true);
 	}
 	
 	private void showTransactionsListTablePanel() {
-//        //Create and set up the window
-//        JFrame frame = new JFrame("Transactions List");
-//        frame.setLocation(100, 100);
-//        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-//
-//        //Create and set up the content pane
-//        JPanel tableContentPane = createTransactionsListTablePanel();
-//        frame.setContentPane(tableContentPane);
+        //Create and set up the window
+        tFrame = new JFrame("Transactions List");
+        tFrame.setLocation(100, 100);
+        tFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
+        //Create and set up the content pane
+        tFrame.setContentPane(createTransactionsListTablePanel());
 		
-		frame.getContentPane().removeAll();
-		frame.getContentPane().add(createTransactionsListTablePanel());
+//		frame.getContentPane().removeAll();
+//		frame.getContentPane().add(createTransactionsListTablePanel());
+//		frame.pack();
+//		frame.setVisible(true);
 
         //Display the window
-        frame.pack();
-        frame.setVisible(true);
+        tFrame.pack();
+        tFrame.setVisible(true);
+        
 	}
 	
 	private void showSellingPanel() {
-		frame.getContentPane().removeAll();
+		//frame.getContentPane().removeAll();
 		frame.getContentPane().add(createSellingPanel());
 		frame.pack();
 		frame.setVisible(true);
@@ -103,7 +123,6 @@ public class ShopGUI {
 	
 	private JPanel createTransactionsListTablePanel() {
 		JPanel tPanel = new JPanel();
-//		tPanel.setLayout(new GridBagLayout());
 		
 		String[] columnNames = {"ID"
 								, "Date"
@@ -115,22 +134,19 @@ public class ShopGUI {
 								, "Model"
 								, "Price"};
 		
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy kk:mm:ss");
-		
 		ArrayList<Transaction> transactions = shop.getAllTransactions();
-		
 		Object[][] data = new Object[transactions.size()][];
 		for (int i = 0; i < transactions.size(); i++ ) {
 			Transaction t = transactions.get(i);
-			Object[] co = new Object[] {t.getId(), t.getDate(), t.getCustomer().getName()
-					, t.getCustomer().getSurname(), t.getCustomer().getPhoneNumber()
-					, t.getCar().getBodyType(), t.getCar().getModel(), t.getCar().getPrice()};
-			data[i] = co;
+			data[i] = new Object[] {t.getId(), t.getDate()
+					, t.getCustomer().getName(), t.getCustomer().getSurname(), t.getCustomer().getPhoneNumber()
+					, t.getCar().getBodyType(), t.getCar().getBrend(), t.getCar().getModel(), t.getCar().getPrice()};
 		}
 		
 		transactionsTable = new JTable(data, columnNames);
 		transactionsTable.setPreferredScrollableViewportSize(new Dimension(700, 70));
 		transactionsTable.getColumnModel().getColumn(1).setPreferredWidth(130);
+		transactionsTable.getColumnModel().getColumn(4).setPreferredWidth(110);
 		
 		 //Create the scroll pane and add the table to it.
         JScrollPane scrollPane = new JScrollPane(transactionsTable);
@@ -149,7 +165,7 @@ public class ShopGUI {
 		sPanel.add(labelName, new GridBagConstraints(0, 0, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		textFieldName = new JTextField(); //////////////////////////////////////// final ??? //should be global var
+		textFieldName = new JTextField();
 		textFieldName.setColumns(11);
 		sPanel.add(textFieldName, new GridBagConstraints(1, 0, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -158,7 +174,7 @@ public class ShopGUI {
 		sPanel.add(labelSurame, new GridBagConstraints(0, 1, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		textFieldSurname = new JTextField(); ///////////////////////////////////// final ??? //should be global var
+		textFieldSurname = new JTextField();
 		textFieldSurname.setColumns(11);
 		sPanel.add(textFieldSurname, new GridBagConstraints(1, 1, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -167,7 +183,7 @@ public class ShopGUI {
 		sPanel.add(labelPhoneNumber, new GridBagConstraints(0, 2, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		textFieldPhoneNumber = new JTextField("+380"); /////////////////////////// final ??? //should be global var
+		textFieldPhoneNumber = new JTextField("+380");
 		textFieldPhoneNumber.setColumns(11);
 		sPanel.add(textFieldPhoneNumber, new GridBagConstraints(1, 2, 1, 1, 0, 0, 
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -178,7 +194,7 @@ public class ShopGUI {
 		
 		Date today = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy kk:mm:ss");
-		textFieldDate = new JFormattedTextField(dateFormat.format(today)); // final ???
+		textFieldDate = new JFormattedTextField(dateFormat.format(today));
 		textFieldDate.setColumns(11);
 		sPanel.add(textFieldDate, new GridBagConstraints(1, 3, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
@@ -188,8 +204,8 @@ public class ShopGUI {
 		sPanel.add(labelCar, new GridBagConstraints(0, 4, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 
-		final Car[] products = shop.getGarage(); //////////////////////////////////// should be final or global var
-		productsList = new JComboBox<Object>(products); ////////////////////////////////// final ??? //should be global var
+		products = shop.getGarage();
+		productsList = new JComboBox<Object>(products);
 		sPanel.add(productsList, new GridBagConstraints(1, 4, 1, 1, 0, 0,
 				GridBagConstraints.LINE_START, 0, new Insets(0, 0, 0, 0), 0, 0));
 		
@@ -213,21 +229,23 @@ public class ShopGUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String name = textFieldName.getText(); //////////////////////////// Change modifier to final
-				String surname = textFieldSurname.getText(); ////////////////////// Change modifier to final
-				String phone = textFieldPhoneNumber.getText(); //////////////////// Change modifier to final
+				String name = textFieldName.getText();
+				String surname = textFieldSurname.getText();
+				String phone = textFieldPhoneNumber.getText();
 				
 				Customer customer = new Customer(name, surname, phone);
 				
-				Car car = products[productsList.getSelectedIndex()]; ////////////// Change modifier to final
+				Car car = products[productsList.getSelectedIndex()];
 				
-				String date = textFieldDate.getText(); //////////////////////////// Change modifier to final
+				String date = textFieldDate.getText();
 				
 				try {
 					shop.sell(date, car, customer);
 				} catch (NullPointerException exception) {
 					System.out.println("(!) Requested car is absent (!)");
 				}
+				
+				
 			}
 		});
 		
