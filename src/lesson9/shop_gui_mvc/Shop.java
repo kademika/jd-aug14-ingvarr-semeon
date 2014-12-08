@@ -2,17 +2,18 @@ package lesson9.shop_gui_mvc;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class Shop {
 	private Car[] garage;
-	private Transaction[] transactions;
+	private ArrayList<Transaction> transactions;
 	private int[] weeklyTransactionsCounter;
 
 	public Shop(int shopCapacity) {
 		garage = new Car[shopCapacity];
-		transactions = new Transaction[shopCapacity];
+		transactions = new ArrayList<>();
 		weeklyTransactionsCounter = new int[7];
 	}
 
@@ -71,13 +72,7 @@ public class Shop {
 	}
 	
 	private void registerTransaction(String dd_mm_yyyy, Customer customer, Car car) {
-		for (int i = 0; i < transactions.length; i++) {
-			if (transactions[i] == null) {
-				transactions[i] = new Transaction(dd_mm_yyyy, customer, car);
-				return;
-			}
-		}
-		throw new ShopIsOverloadedException();
+		transactions.add(new Transaction(dd_mm_yyyy, customer, car));
 	}
 
 	public void getPriceList() {
@@ -146,14 +141,12 @@ public class Shop {
 	
 	public void outTransactionsList() {
 		System.out.println("Transactions History:");
-		for (int i = 0; i < transactions.length; i++) {
-			if (transactions[i] != null) {
-				System.out.println(transactions[i]);
-			}
+		for (Transaction t : transactions) {
+			System.out.println(t);
 		}
 	}
 	
-	public Transaction[] getAllTransactions() {
+	public ArrayList<Transaction> getAllTransactions() {
 		return transactions;
 	}
 	
@@ -169,26 +162,26 @@ public class Shop {
 	}
 	
 	private void transactionsCount() {
-		for (int i = 0; i < transactions.length; i++) {
-			if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+		for (int i = 0; i < transactions.size(); i++) {
+			if ( transactions.get(i) != null && (Integer.parseInt(transactions.get(i).getDate().substring(0, 1))) 
 					== (Integer.parseInt(getCurrentDate().substring(0, 1))) ) {
 				weeklyTransactionsCounter[6] += 1;
-			} else if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+			} else if ( transactions.get(i) != null && (Integer.parseInt(transactions.get(i).getDate().substring(0, 1))) 
 					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 1) ) {
 				weeklyTransactionsCounter[5] += 1;
-			} else if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+			} else if ( transactions.get(i) != null && (Integer.parseInt(transactions.get(i).getDate().substring(0, 1))) 
 					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 2) ) {
 				weeklyTransactionsCounter[4] += 1;
-			} else if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+			} else if ( transactions.get(i) != null && (Integer.parseInt(transactions.get(i).getDate().substring(0, 1))) 
 					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 3) ) {
 				weeklyTransactionsCounter[3] += 1;
-			} else if ( transactions[i] != null &&(Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+			} else if ( transactions.get(i) != null &&(Integer.parseInt(transactions.get(i).getDate().substring(0, 1))) 
 					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 4) ) {
 				weeklyTransactionsCounter[2] += 1;
-			} else if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+			} else if ( transactions.get(i) != null && (Integer.parseInt(transactions.get(i).getDate().substring(0, 1))) 
 					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 5) ) {
 				weeklyTransactionsCounter[1] += 1;
-			} else if ( transactions[i] != null && (Integer.parseInt(transactions[i].getDate().substring(0, 1))) 
+			} else if ( transactions.get(i) != null && (Integer.parseInt(transactions.get(i).getDate().substring(0, 1))) 
 					== (Integer.parseInt(getCurrentDate().substring(0, 1)) - 6) ) {
 				weeklyTransactionsCounter[0] += 1;
 			}
