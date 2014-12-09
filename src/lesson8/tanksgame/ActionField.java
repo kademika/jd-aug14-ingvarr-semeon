@@ -171,20 +171,19 @@ public class ActionField extends JPanel {
 	
 
 			// process move
-	
 			while (covered < 64) {
 				if (direction == Direction.UP) {
 					tank.updateY(-step);
-	//				System.out.println("[move up] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
+//					System.out.println("[move up] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				} else if (direction == Direction.DOWN) {
 					tank.updateY(step);
-	//				System.out.println("[move down] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
+//					System.out.println("[move down] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				} else if (direction == Direction.LEFT) {
 					tank.updateX(-step);
-	//				System.out.println("[move left] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
+//					System.out.println("[move left] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				} else {
 					tank.updateX(step);
-	//				System.out.println("[move right] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
+//					System.out.println("[move right] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
 				}
 				covered += step;
 	
@@ -277,7 +276,7 @@ public class ActionField extends JPanel {
 		bullet = new Bullet(-100, -100, Direction.NONE);
 
 		JFrame frame = new JFrame("BATTLE FIELD, DAY 8");
-		frame.setLocation(750, 150);
+		frame.setLocation(650, 50);
 		frame.setMinimumSize(new Dimension(battleField.getBfWidth(), battleField.getBfHeight() + 22));
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.getContentPane().add(this);

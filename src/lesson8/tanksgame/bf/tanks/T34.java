@@ -13,7 +13,7 @@ import lesson8.tanksgame.bf.BattleField;
 public class T34 extends AbstractTank {
 	
 	public T34(BattleField bf) {
-		super(bf, 128, 512, Direction.UP);
+		super(bf, 512, 448, Direction.UP);
 		tankColor = new Color(0, 155, 0); //dark green
 		towerColor = new Color(255, 200, 0); //yellow
 		setImage();
@@ -39,8 +39,7 @@ public class T34 extends AbstractTank {
 	}
 
 	private Object[] actoins = new Object[] {
-			Action.TURN_RIGHT,
-			Action.FIRE,
+			Action.TURN_LEFT,
 			Action.MOVE,
 			Action.FIRE,
 			Action.MOVE,

@@ -42,13 +42,12 @@ public class BT7 extends AbstractTank {
 	
 	private Object[] actoins = new Object[] {
 		Action.TURN_DOWN,
-		Action.FIRE,
 		Action.MOVE,
 		Action.TURN_RIGHT,
-		Action.FIRE,
+//		Action.FIRE,
 		Action.MOVE,
-		Action.FIRE,
-		Action.FIRE
+//		Action.FIRE,
+//		Action.FIRE
 	};
 		
 	private int step = 0;
